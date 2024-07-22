@@ -102,6 +102,12 @@
   --ac-btn-small-height: var(--ac-spacing-8);
   --ac-btn-small-icon-size: var(--ac-spacing-5);
   --ac-btn-small-padding: var(--ac-spacing-6);
+
+  /* Outline */
+  --ac-outline-color: rgba(var(--ac-primary), 0.5);
+  --ac-outline-offset: var(--ac-spacing-0-5);
+  --ac-outline-style: solid;
+  --ac-outline-width: var(--ac-border-2);
 }
 
 *,
@@ -113,6 +119,12 @@
 }
 
 *:focus {
-  outline: none;
-  box-shadow: var(--ac-primary-focus);
+  outline-color: transparent;
+  outline-style: var(--ac-outline-style);
+  outline-width: var(--ac-outline-width);
+  outline-offset: var(--ac-outline-offset);
+}
+
+*:focus-visible {
+  outline-color: var(--ac-outline-color);
 }

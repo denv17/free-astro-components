@@ -46,6 +46,7 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
     width: var(--ac-spacing-6);
 
     &:hover {
+      background-color: rgba(var(--ac-primary), 0.1);
       border-color: var(--ac-primary-hover);
     }
 
@@ -72,15 +73,12 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
       color: var(--ac-primary-hover);
     }
 
-    &:checked:focus {
-      box-shadow:
-        inset 0 0 0 4px rgb(var(--ac-white)),
-        var(--ac-primary-focus);
-    }
-
-    &:focus,
     &:active {
       border-color: rgb(var(--ac-primary));
+    }
+
+    &:focus {
+      outline-color: var(--ac-outline-color);
     }
 
     &.ac-radio--error:not(:checked) {

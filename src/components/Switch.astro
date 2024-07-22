@@ -45,7 +45,7 @@ const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
     width: var(--ac-spacing-10);
 
     &:hover {
-      background-color: rgba(var(--ac-primary), 0.05);
+      background-color: rgba(var(--ac-primary), 0.1);
       border-color: var(--ac-primary-hover);
     }
 
@@ -59,6 +59,10 @@ const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
 
     &:checked:hover {
       background-color: var(--ac-primary-hover);
+    }
+
+    &:focus {
+      outline-color: var(--ac-outline-color);
     }
 
     &:checked + .ac-switch-dot:first-of-type + .ac-switch-label {
@@ -78,7 +82,7 @@ const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
     background-color: rgb(var(--ac-white));
     border-radius: var(--ac-rounded-full);
     box-shadow: 0 0 var(--ac-spacing-0-5) var(--ac-border)
-      rgba(var(--ac-primary), 0.4);
+      rgba(var(--ac-primary), 0.5);
     height: var(--ac-spacing-5);
     left: var(--ac-spacing-0-5);
     pointer-events: none;

@@ -46,9 +46,11 @@ const checkboxClasses = [
     height: var(--ac-spacing-6);
     line-height: var(--ac-leading-normal);
     margin: 0;
+    transition: all 0.3s ease-in-out;
     width: var(--ac-spacing-6);
 
     &:hover {
+      background-color: rgba(var(--ac-primary), 0.1);
       border-color: var(--ac-primary-hover);
     }
 
@@ -77,9 +79,12 @@ const checkboxClasses = [
       color: var(--ac-primary-hover);
     }
 
-    &:focus,
     &:active {
       border-color: rgb(var(--ac-primary));
+    }
+
+    &:focus {
+      outline-color: var(--ac-outline-color);
     }
 
     &.ac-checkbox--error:not(:checked) {

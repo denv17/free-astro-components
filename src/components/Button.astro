@@ -105,10 +105,6 @@ const buttonClasses = [
       background-color: var(--ac-primary-active);
       border-color: var(--ac-primary-active);
     }
-
-    &:focus {
-      box-shadow: var(--ac-primary-focus);
-    }
   }
 
   .ac-btn--secondary {
@@ -126,8 +122,8 @@ const buttonClasses = [
       border-color: var(--ac-secondary-active);
     }
 
-    &:focus {
-      box-shadow: var(--ac-secondary-focus);
+    &:focus-visible {
+      outline-color: rgba(var(--ac-secondary), 0.5);
     }
   }
 
@@ -146,8 +142,8 @@ const buttonClasses = [
       border-color: var(--ac-dark-active);
     }
 
-    &:focus {
-      box-shadow: var(--ac-dark-focus);
+    &:focus-visible {
+      outline-color: rgba(var(--ac-dark), 0.5);
     }
   }
 
@@ -166,8 +162,8 @@ const buttonClasses = [
       border-color: var(--ac-white-active);
     }
 
-    &:focus {
-      box-shadow: var(--ac-white-focus);
+    &:focus-visible {
+      outline-color: rgba(var(--ac-white), 0.5);
     }
   }
 
