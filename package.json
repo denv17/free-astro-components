@@ -1,0 +1,32 @@
+{
+  "name": "free-astro-components",
+  "description": "A collection of free Astro components",
+  "author": "Denis Ventura",
+  "type": "module",
+  "version": "0.0.10",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./src/types/index.d.ts",
+        "default": "./src/index.js"
+      }
+    }
+  },
+  "main": "./src/index.js",
+  "types": "./src/types/index.d.ts",
+  "scripts": {
+    "dev": "astro dev --host",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.8.2",
+    "astro": "^4.12.2",
+    "typescript": "^5.5.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}

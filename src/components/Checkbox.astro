@@ -1,0 +1,93 @@
+---
+interface Props {
+  label?: string
+  error?: boolean
+  class?: string
+}
+
+const { label, error, class: className, ...props } = Astro.props
+const checkboxClasses = [
+  'ac-checkbox',
+  error ? 'ac-checkbox--error' : '',
+  className,
+]
+  .filter(Boolean)
+  .join(' ')
+---
+
+<label class="ac-checkbox-wrapper">
+  <input type="checkbox" class={checkboxClasses} {...props} />
+  {label && <span class="ac-checkbox-label">{label}</span>}
+</label>
+
+<style>
+  .ac-checkbox-wrapper {
+    align-items: center;
+    color: rgb(var(--ac-gray-400));
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--ac-font-sans);
+    font-size: var(--ac-text-sm);
+    gap: var(--ac-spacing-2);
+
+    &:has(:disabled) {
+      opacity: var(--ac-disabled-opacity);
+      pointer-events: none;
+    }
+  }
+
+  .ac-checkbox {
+    appearance: none;
+    border-color: rgb(var(--ac-primary));
+    border-radius: var(--ac-rounded-md);
+    border-style: solid;
+    border-width: var(--ac-border-2);
+    cursor: inherit;
+    height: var(--ac-spacing-6);
+    line-height: var(--ac-leading-normal);
+    margin: 0;
+    width: var(--ac-spacing-6);
+
+    &:hover {
+      border-color: var(--ac-primary-hover);
+    }
+
+    &:hover + .ac-checkbox-label {
+      color: var(--ac-primary-hover);
+    }
+
+    &:checked {
+      background-color: rgb(var(--ac-primary));
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cpath d='M7 13L10 16L17 9' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
+      background-size: var(--ac-spacing-5);
+      background-position: center;
+      border-color: rgb(var(--ac-primary));
+    }
+
+    &:checked:hover {
+      border-color: var(--ac-primary-hover);
+      background-color: var(--ac-primary-hover);
+    }
+
+    &:checked + .ac-checkbox-label {
+      color: rgb(var(--ac-dark));
+    }
+
+    &:checked:hover + .ac-checkbox-label {
+      color: var(--ac-primary-hover);
+    }
+
+    &:focus,
+    &:active {
+      border-color: rgb(var(--ac-primary));
+    }
+
+    &.ac-checkbox--error:not(:checked) {
+      border-color: rgb(var(--ac-danger));
+    }
+
+    &.ac-checkbox--error:not(:checked) + .ac-checkbox-label {
+      color: rgb(var(--ac-danger));
+    }
+  }
+</style>

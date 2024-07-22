@@ -1,0 +1,118 @@
+:root {
+  /* Colors */
+  --ac-transparent: transparent;
+  --ac-current: currentColor;
+  --ac-white: 255, 255, 255;
+  --ac-primary: 3, 103, 252;
+  --ac-secondary: 210, 248, 1;
+  --ac-dark: 22, 22, 22;
+  --ac-gray-100: 232, 232, 232;
+  --ac-gray-200: 185, 185, 185;
+  --ac-gray-300: 139, 139, 139;
+  --ac-gray-400: 92, 92, 92;
+  --ac-gray-500: 45, 45, 45;
+  --ac-success: 0, 255, 0;
+  --ac-warning: 255, 255, 0;
+  --ac-danger: 255, 0, 0;
+
+  --ac-primary-hover: rgba(var(--ac-primary), 0.9);
+  --ac-secondary-hover: rgba(var(--ac-secondary), 0.9);
+  --ac-dark-hover: rgba(var(--ac-dark), 0.9);
+  --ac-white-hover: rgba(var(--ac-white), 0.9);
+
+  --ac-primary-active: rgb(var(--ac-primary));
+  --ac-secondary-active: rgb(var(--ac-secondary));
+  --ac-dark-active: rgb(var(--ac-dark));
+  --ac-white-active: rgb(var(--ac-white));
+
+  --ac-primary-focus: 0 0 0 2px rgba(var(--ac-primary), 0.4);
+  --ac-secondary-focus: 0 0 0 2px rgba(var(--ac-secondary), 0.4);
+  --ac-dark-focus: 0 0 0 2px rgba(var(--ac-dark), 0.4);
+  --ac-white-focus: 0 0 0 2px rgba(var(--ac-white), 0.4);
+
+  --ac-disabled-opacity: 0.4;
+
+  /* Font family */
+  --ac-font-sans: ui-sans-serif, system-ui, sans-serif;
+
+  /* Font size */
+  --ac-text-xs: 0.75rem;
+  --ac-text-sm: 0.875rem;
+  --ac-text-md: 1rem;
+  --ac-text-lg: 1.125rem;
+  --ac-text-xl: 1.25rem;
+  --ac-text-2xl: 1.5rem;
+  --ac-text-3xl: 1.875rem;
+
+  /* Font weight */
+  --ac-font-light: 300;
+  --ac-font-normal: 400;
+  --ac-font-bold: 700;
+
+  /* Line height */
+  --ac-leading-none: 1;
+  --ac-leading-normal: 1.5;
+
+  /* Spacing */
+  --ac-spacing-px: 1px;
+  --ac-spacing-0-5: 0.125rem;
+  --ac-spacing-1: 0.25rem;
+  --ac-spacing-1-5: 0.375rem;
+  --ac-spacing-2: 0.5rem;
+  --ac-spacing-2-5: 0.625rem;
+  --ac-spacing-3: 0.75rem;
+  --ac-spacing-3-5: 0.875rem;
+  --ac-spacing-4: 1rem;
+  --ac-spacing-5: 1.25rem;
+  --ac-spacing-6: 1.5rem;
+  --ac-spacing-7: 1.75rem;
+  --ac-spacing-8: 2rem;
+  --ac-spacing-9: 2.25rem;
+  --ac-spacing-10: 2.5rem;
+  --ac-spacing-12: 3rem;
+
+  /* Border width */
+  --ac-border-0: 0;
+  --ac-border: 1px;
+  --ac-border-2: 2px;
+
+  /* Border radius */
+  --ac-rounded-none: 0;
+  --ac-rounded-sm: 0.125rem;
+  --ac-rounded: 0.25rem;
+  --ac-rounded-md: 0.375rem;
+  --ac-rounded-lg: 0.5rem;
+  --ac-rounded-xl: 0.75rem;
+  --ac-rounded-2xl: 1rem;
+  --ac-rounded-3xl: 1.5rem;
+  --ac-rounded-4xl: 2rem;
+  --ac-rounded-full: 9999px;
+
+  /* Button */
+  --ac-btn-border-radius: var(--ac-rounded-xl);
+  --ac-btn-font-weight: var(--ac-font-bold);
+  --ac-btn-gap: var(--ac-spacing-2);
+  --ac-btn-icon-medium-size: var(--ac-spacing-12);
+  --ac-btn-icon-small-size: var(--ac-spacing-8);
+  --ac-btn-medium-font-size: var(--ac-text-sm);
+  --ac-btn-medium-height: var(--ac-spacing-12);
+  --ac-btn-medium-icon-size: var(--ac-spacing-6);
+  --ac-btn-medium-padding: var(--ac-spacing-7);
+  --ac-btn-small-font-size: var(--ac-text-xs);
+  --ac-btn-small-height: var(--ac-spacing-8);
+  --ac-btn-small-icon-size: var(--ac-spacing-5);
+  --ac-btn-small-padding: var(--ac-spacing-6);
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: var(--ac-primary-focus);
+}

@@ -1,0 +1,219 @@
+---
+import '../css/main.css'
+import Icon from './Icon.astro'
+
+interface Props {
+  href?: string
+  icon?: string
+  label?: string
+  variant?: 'primary' | 'secondary' | 'dark' | 'light'
+  iconPosition?: 'left' | 'right'
+  size?: 'small' | 'medium'
+  class?: string
+}
+
+const {
+  href,
+  icon,
+  label,
+  variant = 'primary',
+  iconPosition = 'right',
+  size = 'medium',
+  class: className,
+  ...props
+} = Astro.props
+
+const variantClasses = {
+  primary: 'ac-btn--primary',
+  secondary: 'ac-btn--secondary',
+  dark: 'ac-btn--dark',
+  light: 'ac-btn--light',
+}[variant]
+
+const sizeClasses = {
+  small: 'ac-btn--small',
+  medium: 'ac-btn--medium',
+}[size]
+
+const onlyIconClasses = {
+  small: 'ac-btn--icon-small',
+  medium: 'ac-btn--icon-medium',
+}[size]
+
+const buttonClasses = [
+  'ac-btn',
+  variantClasses,
+  label ? sizeClasses : onlyIconClasses,
+  className,
+]
+  .filter(Boolean)
+  .join(' ')
+---
+
+{
+  href ? (
+    <a class={buttonClasses} href={href} {...props}>
+      {icon && iconPosition === 'left' && <Icon icon={icon} />}
+      {label && <span>{label}</span>}
+      {icon && iconPosition === 'right' && <Icon icon={icon} />}
+    </a>
+  ) : (
+    <button class={buttonClasses} {...props}>
+      {icon && iconPosition === 'left' && <Icon icon={icon} />}
+      {label && <span>{label}</span>}
+      {icon && iconPosition === 'right' && <Icon icon={icon} />}
+    </button>
+  )
+}
+
+<style>
+  .ac-btn {
+    -webkit-appearance: button;
+    align-items: center;
+    border-radius: var(--ac-btn-border-radius);
+    border-style: solid;
+    border-width: var(--ac-border-2);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--ac-font-sans);
+    font-weight: var(--ac-btn-font-weight);
+    gap: var(--ac-btn-gap);
+    justify-content: center;
+    line-height: var(--ac-leading-normal);
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+
+    &:disabled {
+      opacity: var(--ac-disabled-opacity);
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  .ac-btn--primary {
+    background-color: rgb(var(--ac-primary));
+    border-color: rgb(var(--ac-primary));
+    color: rgb(var(--ac-white));
+
+    &:hover {
+      background-color: var(--ac-primary-hover);
+      border-color: var(--ac-primary-hover);
+    }
+
+    &:active {
+      background-color: var(--ac-primary-active);
+      border-color: var(--ac-primary-active);
+    }
+
+    &:focus {
+      box-shadow: var(--ac-primary-focus);
+    }
+  }
+
+  .ac-btn--secondary {
+    background-color: rgb(var(--ac-secondary));
+    border-color: rgb(var(--ac-secondary));
+    color: rgb(var(--ac-dark));
+
+    &:hover {
+      background-color: var(--ac-secondary-hover);
+      border-color: var(--ac-secondary-hover);
+    }
+
+    &:active {
+      background-color: var(--ac-secondary-active);
+      border-color: var(--ac-secondary-active);
+    }
+
+    &:focus {
+      box-shadow: var(--ac-secondary-focus);
+    }
+  }
+
+  .ac-btn--dark {
+    background-color: rgb(var(--ac-dark));
+    border-color: rgb(var(--ac-dark));
+    color: rgb(var(--ac-white));
+
+    &:hover {
+      background-color: var(--ac-dark-hover);
+      border-color: var(--ac-dark-hover);
+    }
+
+    &:active {
+      background-color: var(--ac-dark-active);
+      border-color: var(--ac-dark-active);
+    }
+
+    &:focus {
+      box-shadow: var(--ac-dark-focus);
+    }
+  }
+
+  .ac-btn--light {
+    background-color: rgb(var(--ac-white));
+    border-color: rgb(var(--ac-white));
+    color: rgb(var(--ac-dark));
+
+    &:hover {
+      background-color: var(--ac-white-hover);
+      border-color: var(--ac-white-hover);
+    }
+
+    &:active {
+      background-color: var(--ac-white-active);
+      border-color: var(--ac-white-active);
+    }
+
+    &:focus {
+      box-shadow: var(--ac-white-focus);
+    }
+  }
+
+  .ac-btn--small {
+    font-size: var(--ac-btn-small-font-size);
+    height: var(--ac-btn-small-height);
+    padding-left: var(--ac-btn-small-padding);
+    padding-right: var(--ac-btn-small-padding);
+
+    > svg {
+      height: var(--ac-btn-small-icon-size);
+      width: var(--ac-btn-small-icon-size);
+    }
+  }
+
+  .ac-btn--medium {
+    font-size: var(--ac-btn-medium-font-size);
+    height: var(--ac-btn-medium-height);
+    padding-left: var(--ac-btn-medium-padding);
+    padding-right: var(--ac-btn-medium-padding);
+
+    > svg {
+      height: var(--ac-btn-medium-icon-size);
+      width: var(--ac-btn-medium-icon-size);
+    }
+  }
+
+  .ac-btn--icon-small {
+    height: var(--ac-btn-icon-small-size);
+    padding: 0;
+    width: var(--ac-btn-icon-small-size);
+
+    > svg {
+      height: var(--ac-btn-small-icon-size);
+      width: var(--ac-btn-small-icon-size);
+    }
+  }
+
+  .ac-btn--icon-medium {
+    height: var(--ac-btn-icon-medium-size);
+    padding: 0;
+    width: var(--ac-btn-icon-medium-size);
+
+    > svg {
+      height: var(--ac-btn-medium-icon-size);
+      width: var(--ac-btn-medium-icon-size);
+    }
+  }
+</style>

@@ -1,0 +1,98 @@
+---
+interface Props {
+  label?: string
+  error?: boolean
+  class?: string
+}
+
+const { label, error, class: className, ...props } = Astro.props
+const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
+  .filter(Boolean)
+  .join(' ')
+---
+
+<label class="ac-radio-wrapper">
+  <input type="radio" class={radioClasses} {...props} />
+  {label && <span class="ac-radio-label">{label}</span>}
+</label>
+
+<style>
+  .ac-radio-wrapper {
+    align-items: center;
+    color: rgb(var(--ac-gray-400));
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--ac-font-sans);
+    font-size: var(--ac-text-sm);
+    gap: var(--ac-spacing-1-5);
+
+    &:has(:disabled) {
+      opacity: var(--ac-disabled-opacity);
+      pointer-events: none;
+    }
+  }
+
+  .ac-radio {
+    appearance: none;
+    border-color: rgb(var(--ac-primary));
+    border-radius: var(--ac-rounded-full);
+    border-style: solid;
+    border-width: var(--ac-border-2);
+    cursor: inherit;
+    height: var(--ac-spacing-6);
+    line-height: var(--ac-leading-normal);
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+    width: var(--ac-spacing-6);
+
+    &:hover {
+      border-color: var(--ac-primary-hover);
+    }
+
+    &:hover + .ac-radio-label {
+      color: var(--ac-primary-hover);
+    }
+
+    &:checked {
+      background-color: rgb(var(--ac-primary));
+      border-color: rgb(var(--ac-primary));
+      box-shadow: inset 0 0 0 4px rgb(var(--ac-white));
+    }
+
+    &:checked:hover {
+      background-color: var(--ac-primary-hover);
+      border-color: var(--ac-primary-hover);
+    }
+
+    &:checked + .ac-radio-label {
+      color: rgb(var(--ac-dark));
+    }
+
+    &:checked:hover + .ac-radio-label {
+      color: var(--ac-primary-hover);
+    }
+
+    &:checked:focus {
+      box-shadow:
+        inset 0 0 0 4px rgb(var(--ac-white)),
+        var(--ac-primary-focus);
+    }
+
+    &:focus,
+    &:active {
+      border-color: rgb(var(--ac-primary));
+    }
+
+    &.ac-radio--error:not(:checked) {
+      border-color: rgb(var(--ac-danger));
+    }
+
+    &.ac-radio--error:not(:checked) + .ac-radio-label {
+      color: rgb(var(--ac-danger));
+    }
+  }
+
+  .ac-radio-label {
+    transition: color 0.3s ease-in-out;
+  }
+</style>

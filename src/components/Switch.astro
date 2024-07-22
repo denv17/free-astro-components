@@ -1,0 +1,95 @@
+---
+interface Props {
+  label?: string
+  class?: string
+}
+const { label, class: className, ...props } = Astro.props
+
+const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
+---
+
+<label class="ac-switch-wrapper">
+  <input type="checkbox" role="switch" class={switchClasses} {...props} />
+  <span class="ac-switch-dot"></span>
+  {label && <span class="ac-switch-label">{label}</span>}
+</label>
+
+<style>
+  .ac-switch-wrapper {
+    align-items: center;
+    color: rgb(var(--ac-gray-400));
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--ac-font-sans);
+    font-size: var(--ac-text-sm);
+    gap: var(--ac-spacing-2);
+    position: relative;
+
+    &:has(:disabled) {
+      opacity: var(--ac-disabled-opacity);
+      pointer-events: none;
+    }
+  }
+
+  .ac-switch {
+    appearance: none;
+    background-color: rgb(var(--ac-white));
+    border-color: rgb(var(--ac-primary));
+    border-radius: var(--ac-rounded-full);
+    border-style: solid;
+    border-width: var(--ac-border-2);
+    cursor: inherit;
+    height: var(--ac-spacing-6);
+    margin: 0;
+    transition: all 0.3s ease-in-out;
+    width: var(--ac-spacing-10);
+
+    &:hover {
+      background-color: rgba(var(--ac-primary), 0.05);
+      border-color: var(--ac-primary-hover);
+    }
+
+    &:hover + .ac-switch-dot:first-of-type + .ac-switch-label {
+      color: var(--ac-primary-hover);
+    }
+
+    &:checked {
+      background-color: rgb(var(--ac-primary));
+    }
+
+    &:checked:hover {
+      background-color: var(--ac-primary-hover);
+    }
+
+    &:checked + .ac-switch-dot:first-of-type + .ac-switch-label {
+      color: rgb(var(--ac-dark));
+    }
+
+    &:checked + .ac-switch-dot {
+      transform: translateX(var(--ac-spacing-4)) translateY(-50%);
+    }
+
+    &:checked:hover + .ac-switch-dot:first-of-type + .ac-switch-label {
+      color: var(--ac-primary-hover);
+    }
+  }
+
+  .ac-switch-dot {
+    background-color: rgb(var(--ac-white));
+    border-radius: var(--ac-rounded-full);
+    box-shadow: 0 0 var(--ac-spacing-0-5) var(--ac-border)
+      rgba(var(--ac-primary), 0.4);
+    height: var(--ac-spacing-5);
+    left: var(--ac-spacing-0-5);
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+    width: var(--ac-spacing-5);
+  }
+
+  .ac-switch-label {
+    transition: color 0.3s ease-in-out;
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Checkbox from '../components/Checkbox.astro'
+import Radio from '../components/Radio.astro'
+import Switch from '../components/Switch.astro'
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="content">
+    <h1>Controls</h1>
+
+    <div>
+      <h2>Checkbox</h2>
+      <div>
+        <Checkbox label="Checkbox" />
+        <br />
+        <br />
+        <Checkbox label="Checkbox checked" checked />
+        <br />
+        <br />
+        <Checkbox label="Checkbox disabled" disabled />
+        <br />
+        <br />
+        <Checkbox label="Checkbox checked disabled" checked disabled />
+        <br />
+        <br />
+        <Checkbox label="Checkbox error" error />
+      </div>
+    </div>
+    <div>
+      <h2>Radiobutton</h2>
+      <div>
+        <Radio label="Radiobutton" />
+        <br />
+        <br />
+        <Radio label="Radiobutton checked" checked />
+        <br />
+        <br />
+        <Radio label="Radiobutton disabled" disabled />
+        <br />
+        <br />
+        <Radio label="Radiobutton checked disabled" checked disabled />
+        <br />
+        <br />
+        <Radio label="Radiobutton error" error />
+      </div>
+    </div>
+    <div>
+      <h2>Switch</h2>
+      <div>
+        <Switch label="Switch Off" />
+        <br />
+        <br />
+        <Switch label="Switch On" checked />
+        <br />
+        <br />
+        <Switch label="Switch Off disabled" disabled />
+        <br />
+        <br />
+        <Switch label="Switch On disabled" checked disabled />
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /*@import '../css/preflight.css';*/
+
+  .content {
+    padding: var(--ac-spacing-8);
+  }
+</style>

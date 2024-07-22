@@ -1,0 +1,157 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Button from '../components/Button.astro'
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="content">
+    <h1>Buttons</h1>
+
+    <div>
+      <p>Primary buttons</p>
+      <div>
+        <Button size="small" icon="arrow-right" label="Primary Button" />
+        <Button icon="arrow-right" label="Primary Button" />
+        <Button size="small" icon="arrow-right" />
+        <Button icon="arrow-right" />
+      </div>
+      <div>
+        <Button
+          href="#"
+          size="small"
+          icon="arrow-right"
+          label="Primary Button"
+        />
+        <Button href="#" icon="arrow-right" label="Primary Button" />
+        <Button href="#" size="small" icon="arrow-right" />
+        <Button href="#" icon="arrow-right" />
+      </div>
+      <div>
+        <Button
+          size="small"
+          icon="arrow-right"
+          label="Primary Button"
+          disabled
+        />
+        <Button icon="arrow-right" label="Primary Button" disabled />
+        <Button size="small" icon="arrow-right" disabled />
+        <Button icon="arrow-right" disabled />
+      </div>
+
+      <p>Dark buttons</p>
+
+      <div>
+        <Button
+          variant="dark"
+          size="small"
+          icon="arrow-right"
+          label="dark Button"
+        />
+        <Button variant="dark" icon="arrow-right" label="dark Button" />
+        <Button variant="dark" size="small" icon="arrow-right" />
+        <Button variant="dark" icon="arrow-right" />
+      </div>
+
+      <div>
+        <Button
+          variant="dark"
+          size="small"
+          icon="arrow-right"
+          label="dark Button"
+          disabled
+        />
+        <Button
+          variant="dark"
+          icon="arrow-right"
+          label="dark Button"
+          disabled
+        />
+        <Button variant="dark" size="small" icon="arrow-right" disabled />
+        <Button variant="dark" icon="arrow-right" disabled />
+      </div>
+
+      <div class="dark-bg">
+        <p>Secondary buttons</p>
+        <div>
+          <Button
+            variant="secondary"
+            size="small"
+            icon="arrow-right"
+            label="Primary Button"
+          />
+          <Button
+            variant="secondary"
+            icon="arrow-right"
+            label="Primary Button"
+          />
+          <Button variant="secondary" size="small" icon="arrow-right" />
+          <Button variant="secondary" icon="arrow-right" />
+        </div>
+        <div>
+          <Button
+            variant="secondary"
+            size="small"
+            icon="arrow-right"
+            label="Primary Button"
+            disabled
+          />
+          <Button
+            variant="secondary"
+            icon="arrow-right"
+            label="Primary Button"
+            disabled
+          />
+          <Button
+            variant="secondary"
+            size="small"
+            icon="arrow-right"
+            disabled
+          />
+          <Button variant="secondary" icon="arrow-right" disabled />
+        </div>
+        <p>light buttons</p>
+        <div>
+          <Button
+            variant="light"
+            size="small"
+            icon="arrow-right"
+            label="light Button"
+          />
+          <Button variant="light" icon="arrow-right" label="light Button" />
+          <Button variant="light" size="small" icon="arrow-right" />
+          <Button variant="light" icon="arrow-right" />
+        </div>
+        <div>
+          <Button
+            variant="light"
+            size="small"
+            icon="arrow-right"
+            label="light Button"
+            disabled
+          />
+          <Button
+            variant="light"
+            icon="arrow-right"
+            label="light Button"
+            disabled
+          />
+          <Button variant="light" size="small" icon="arrow-right" disabled />
+          <Button variant="light" icon="arrow-right" disabled />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /*@import '../css/preflight.css';*/
+  .content {
+    padding: var(--ac-spacing-8);
+  }
+
+  .dark-bg {
+    background-color: rgb(var(--ac-dark));
+    color: rgb(var(--ac-white));
+    padding: var(--ac-spacing-8);
+  }
+</style>
