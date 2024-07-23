@@ -17,3 +17,7 @@ export const Radio: Radio
 // Switch component
 export type Switch = typeof import('../index.js').Switch
 export const Switch: Switch
+
+// Input component
+export type Input = typeof import('../index.js').Input
+export const Input: Input
