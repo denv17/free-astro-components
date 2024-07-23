@@ -1,4 +1,5 @@
 ---
+import '../css/main.css'
 import Icon from './Icon.astro'
 
 interface Props {
@@ -45,7 +46,7 @@ const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
       {...props}
     />
     {
-      icon && !props.type === 'password' && (
+      icon && props.type !== 'password' && (
         <Icon icon={icon} class="ac-input-icon ac-input-icon--right" />
       )
     }
