@@ -133,3 +133,8 @@
 *:focus-visible {
   outline-color: var(--ac-outline-color);
 }
+
+input::placeholder,
+textarea::placeholder {
+  color: rgb(var(--ac-gray-300));
+}

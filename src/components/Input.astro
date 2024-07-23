@@ -85,6 +85,15 @@ const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
       opacity: var(--ac-disabled-opacity);
       pointer-events: none;
     }
+
+    &:has(.ac-input-icon--left) .ac-input {
+      padding-left: var(--ac-spacing-12);
+    }
+
+    &:has(.ac-input-icon--right) .ac-input,
+    &:has(.ac-input-password-btn) .ac-input {
+      padding-right: var(--ac-spacing-12);
+    }
   }
 
   .ac-input {
@@ -102,10 +111,6 @@ const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
     padding-right: var(--ac-input-padding);
     transition: all 0.3s ease-in-out;
     width: 100%;
-
-    &::placeholder {
-      color: rgb(var(--ac-gray-300));
-    }
 
     &:hover {
       border-color: rgb(var(--ac-gray-200));
@@ -138,14 +143,6 @@ const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
 
     &.ac-input--success + .ac-input-helper-text {
       color: rgb(var(--ac-success));
-    }
-
-    &[type='search'] {
-      padding-left: var(--ac-spacing-12);
-    }
-
-    &[type='password'] {
-      padding-right: var(--ac-spacing-12);
     }
   }
 
