@@ -1,8 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import Checkbox from '../components/Checkbox.astro'
-import Radio from '../components/Radio.astro'
-import Switch from '../components/Switch.astro'
+import Input from '../components/Input.astro'
 ---
 
 <Layout title="Welcome to Astro.">
@@ -10,21 +8,71 @@ import Switch from '../components/Switch.astro'
     <h1>Controls</h1>
 
     <div>
-      <h2>Checkbox</h2>
-      <div>
-        <Checkbox label="Checkbox" />
-        <br />
-        <br />
-        <Checkbox label="Checkbox checked" checked />
-        <br />
-        <br />
-        <Checkbox label="Checkbox disabled" disabled />
-        <br />
-        <br />
-        <Checkbox label="Checkbox checked disabled" checked disabled />
-        <br />
-        <br />
-        <Checkbox label="Checkbox error" error />
+      <h2>Inputs</h2>
+      <div class="controls-wrapper">
+        <Input
+          label="Input label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+        />
+
+        <Input
+          label="Input label"
+          value="Value"
+          placeholder="Placeholder"
+          helperText="Helper text"
+        />
+
+        <Input
+          label="Input label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          disabled
+        />
+
+        <Input
+          label="Input label"
+          value="Value"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          disabled
+        />
+
+        <Input
+          label="Input label"
+          value="Value"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          readonly
+        />
+
+        <Input
+          label="Input label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          status="error"
+        />
+
+        <Input
+          label="Input label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          status="success"
+        />
+
+        <Input
+          type="search"
+          label="Input label"
+          placeholder="Buscar aquí"
+          helperText="Helper text"
+        />
+
+        <Input
+          type="password"
+          label="Input label"
+          placeholder="Escribe tu contraseña"
+          helperText="Helper text"
+        />
       </div>
     </div>
   </main>
@@ -35,5 +83,11 @@ import Switch from '../components/Switch.astro'
 
   .content {
     padding: var(--ac-spacing-8);
+  }
+
+  .controls-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--ac-spacing-8);
   }
 </style>

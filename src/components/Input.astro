@@ -1,0 +1,247 @@
+---
+import Icon from './Icon.astro'
+
+interface Props {
+  icon?: string
+  label?: string
+  placeholder?: string
+  disabled?: boolean
+  helperText?: string
+  status?: 'default' | 'error' | 'success'
+  class?: string
+}
+
+const {
+  icon,
+  label,
+  placeholder = '',
+  disabled = false,
+  helperText = '',
+  status = 'default',
+  ...props
+} = Astro.props
+
+const statusClasses = {
+  default: '',
+  error: 'ac-input--error',
+  success: 'ac-input--success',
+}[status]
+
+const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
+---
+
+<div class="ac-input-wrapper">
+  {label && <label class="ac-input-label">{label}</label>}
+  <div>
+    {
+      props && props.type === 'search' && (
+        <Icon icon="search" class="ac-input-icon ac-input-icon--left" />
+      )
+    }
+    <input
+      class={inputClasses}
+      placeholder={placeholder}
+      disabled={disabled}
+      {...props}
+    />
+    {
+      icon && !props.type === 'password' && (
+        <Icon icon={icon} class="ac-input-icon ac-input-icon--right" />
+      )
+    }
+    {
+      props && props.type === 'password' && (
+        <button class="ac-input-password-btn">
+          <Icon icon="eye" class="ac-input-eye" />
+          <Icon icon="eye-off" class="ac-input-eye-off" />
+        </button>
+      )
+    }
+  </div>
+  {
+    helperText && (
+      <span class="ac-input-helper-text">
+        {status === 'error' && <Icon icon="warning" />}
+        {status === 'success' && <Icon icon="check-circle" />}
+        {helperText}
+      </span>
+    )
+  }
+</div>
+
+<style>
+  .ac-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ac-font-sans);
+    gap: var(--ac-spacing-2);
+
+    > div {
+      position: relative;
+    }
+
+    &:has(:disabled) {
+      opacity: var(--ac-disabled-opacity);
+      pointer-events: none;
+    }
+  }
+
+  .ac-input {
+    appearance: none;
+    background-color: rgb(var(--ac-white));
+    background-image: none;
+    border-color: rgb(var(--ac-gray-100));
+    border-radius: var(--ac-input-border-radius);
+    border-width: var(--ac-border-2);
+    color: var(--ac-dark);
+    font-size: var(--ac-text-base);
+    height: var(--ac-input-height);
+    line-height: var(--ac-leading-normal);
+    padding-left: var(--ac-input-padding);
+    padding-right: var(--ac-input-padding);
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+
+    &::placeholder {
+      color: rgb(var(--ac-gray-300));
+    }
+
+    &:hover {
+      border-color: rgb(var(--ac-gray-200));
+    }
+
+    &:focus {
+      border-color: var(--ac-primary-hover);
+      outline: none;
+    }
+
+    &:disabled {
+      background-color: rgb(var(--ac-gray-100));
+    }
+
+    &:read-only {
+      background-color: rgb(var(--ac-gray-100));
+    }
+
+    &.ac-input--error {
+      border-color: rgb(var(--ac-danger));
+    }
+
+    &.ac-input--error + .ac-input-helper-text {
+      color: rgb(var(--ac-danger));
+    }
+
+    &.ac-input--success {
+      border-color: rgb(var(--ac-success));
+    }
+
+    &.ac-input--success + .ac-input-helper-text {
+      color: rgb(var(--ac-success));
+    }
+
+    &[type='search'] {
+      padding-left: var(--ac-spacing-12);
+    }
+
+    &[type='password'] {
+      padding-right: var(--ac-spacing-12);
+    }
+  }
+
+  .ac-input-label {
+    color: rgb(var(--ac-gray-400));
+    font-size: var(--ac-text-sm);
+  }
+
+  .ac-input-helper-text {
+    align-items: center;
+    color: rgb(var(--ac-gray-300));
+    display: flex;
+    font-size: var(--ac-text-sm);
+    gap: var(--ac-spacing-1);
+
+    svg {
+      flex-shrink: 0;
+      height: var(--ac-spacing-4);
+      width: var(--ac-spacing-4);
+    }
+  }
+
+  .ac-input-icon {
+    color: rgb(var(--ac-gray-300));
+    height: var(--ac-spacing-6);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--ac-spacing-6);
+
+    &.ac-input-icon--left {
+      left: var(--ac-spacing-4);
+    }
+
+    &.ac-input-icon--right {
+      right: var(--ac-spacing-4);
+    }
+  }
+
+  .ac-input-password-btn {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    color: rgb(var(--ac-gray-300));
+    cursor: pointer;
+    height: var(--ac-spacing-6);
+    padding: 0;
+    position: absolute;
+    right: var(--ac-spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+    width: var(--ac-spacing-6);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--ac-primary-hover);
+    }
+
+    .ac-input-eye-off,
+    .ac-input-eye-off {
+      height: var(--ac-spacing-6);
+      width: var(--ac-spacing-6);
+    }
+
+    .ac-input-eye-off {
+      display: none;
+    }
+
+    &.is-visible .ac-input-eye {
+      display: none;
+    }
+
+    &.is-visible .ac-input-eye-off {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  import { DOMLoaded, toggleInputPassword } from '../utils/utils.ts'
+
+  DOMLoaded(() => {
+    const inputPasswordButtons = document.querySelectorAll(
+      '.ac-input-password-btn'
+    )
+
+    inputPasswordButtons.forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault()
+        const input = button
+          ?.closest('.ac-input-wrapper')
+          ?.querySelector('input')
+
+        if (!input) return
+
+        toggleInputPassword(button, input)
+      })
+    })
+  })
+</script>

@@ -32,6 +32,12 @@
 
   --ac-disabled-opacity: 0.4;
 
+  /* Outline */
+  --ac-outline-color: rgba(var(--ac-primary), 0.5);
+  --ac-outline-offset: var(--ac-spacing-0-5);
+  --ac-outline-style: solid;
+  --ac-outline-width: var(--ac-border-2);
+
   /* Font family */
   --ac-font-sans: ui-sans-serif, system-ui, sans-serif;
 
@@ -103,11 +109,10 @@
   --ac-btn-small-icon-size: var(--ac-spacing-5);
   --ac-btn-small-padding: var(--ac-spacing-6);
 
-  /* Outline */
-  --ac-outline-color: rgba(var(--ac-primary), 0.5);
-  --ac-outline-offset: var(--ac-spacing-0-5);
-  --ac-outline-style: solid;
-  --ac-outline-width: var(--ac-border-2);
+  /* Input */
+  --ac-input-border-radius: var(--ac-rounded-xl);
+  --ac-input-padding: var(--ac-spacing-4);
+  --ac-input-height: var(--ac-spacing-12);
 }
 
 *,

@@ -24,7 +24,9 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
     display: inline-flex;
     font-family: var(--ac-font-sans);
     font-size: var(--ac-text-sm);
+    font-weight: var(--ac-font-normal);
     gap: var(--ac-spacing-1-5);
+    line-height: var(--ac-leading-normal);
 
     &:has(:disabled) {
       opacity: var(--ac-disabled-opacity);
@@ -40,7 +42,7 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
     border-width: var(--ac-border-2);
     cursor: inherit;
     height: var(--ac-spacing-6);
-    line-height: var(--ac-leading-normal);
+
     margin: 0;
     transition: all 0.3s ease-in-out;
     width: var(--ac-spacing-6);

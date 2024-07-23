@@ -101,13 +101,38 @@ export const icons = [
   },
   {
     category: 'validation',
+    name: 'backspace',
+    path: '<path d="M7.70015 6.35982L3.53349 11.3598C3.22445 11.7307 3.22445 12.2693 3.53349 12.6402L7.70015 17.6402C7.89015 17.8682 8.1716 18 8.46838 18H18C19.6569 18 21 16.6569 21 15V9C21 7.34315 19.6569 6 18 6H8.46837C8.1716 6 7.89015 6.13182 7.70015 6.35982Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 10L13 12M13 12L11 14M13 12L11 10M13 12L15 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+  },
+  {
+    category: 'validation',
     name: 'check',
     path: '<path d="M7 13L10 16L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
   },
   {
     category: 'validation',
+    name: 'check-box',
+    path: '<rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13L10 16L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+  },
+  {
+    category: 'validation',
+    name: 'check-circle',
+    path: '<path d="M7 13L10 16L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+  },
+  {
+    category: 'validation',
     name: 'clear',
     path: '<path d="M8 8L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8L8 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+  },
+  {
+    category: 'validation',
+    name: 'clear-circle',
+    path: '<path d="M9 9L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 9L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+  },
+  {
+    category: 'validation',
+    name: 'warning',
+    path: '<circle cx="12" cy="17" r="1" fill="currentColor"/><path d="M12 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.44722 18.1056L10.2111 4.57771C10.9482 3.10361 13.0518 3.10362 13.7889 4.57771L20.5528 18.1056C21.2177 19.4354 20.2507 21 18.7639 21H5.23607C3.7493 21 2.78231 19.4354 3.44722 18.1056Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
   },
   {
     category: 'validation',

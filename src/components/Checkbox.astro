@@ -28,7 +28,9 @@ const checkboxClasses = [
     display: inline-flex;
     font-family: var(--ac-font-sans);
     font-size: var(--ac-text-sm);
+    font-weight: var(--ac-font-normal);
     gap: var(--ac-spacing-2);
+    line-height: var(--ac-leading-normal);
 
     &:has(:disabled) {
       opacity: var(--ac-disabled-opacity);
@@ -44,7 +46,6 @@ const checkboxClasses = [
     border-width: var(--ac-border-2);
     cursor: inherit;
     height: var(--ac-spacing-6);
-    line-height: var(--ac-leading-normal);
     margin: 0;
     transition: all 0.3s ease-in-out;
     width: var(--ac-spacing-6);
@@ -61,8 +62,8 @@ const checkboxClasses = [
     &:checked {
       background-color: rgb(var(--ac-primary));
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' viewBox='0 0 24 24'%3E%3Cpath d='M7 13L10 16L17 9' stroke='%23FFFFFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3C/path%3E%3C/svg%3E");
-      background-size: var(--ac-spacing-5);
       background-position: center;
+      background-size: var(--ac-spacing-5);
       border-color: rgb(var(--ac-primary));
     }
 
