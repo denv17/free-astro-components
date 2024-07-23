@@ -138,3 +138,8 @@ input::placeholder,
 textarea::placeholder {
   color: rgb(var(--ac-gray-300));
 }
+
+.ac-input-wrapper .ac-input:read-only,
+.ac-textarea-wrapper .ac-textarea:read-only {
+  background-color: rgb(var(--ac-gray-100));
+}

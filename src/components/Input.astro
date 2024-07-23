@@ -81,9 +81,17 @@ const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
       position: relative;
     }
 
-    &:has(:disabled) {
+    &:has(.ac-input:disabled) {
       opacity: var(--ac-disabled-opacity);
       pointer-events: none;
+    }
+
+    &:has(.ac-input--error) .ac-input-helper-text {
+      color: rgb(var(--ac-danger));
+    }
+
+    &:has(.ac-input--success) .ac-input-helper-text {
+      color: rgb(var(--ac-success));
     }
 
     &:has(.ac-input-icon--left) .ac-input {
@@ -125,24 +133,8 @@ const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
       background-color: rgb(var(--ac-gray-100));
     }
 
-    &:read-only {
-      background-color: rgb(var(--ac-gray-100));
-    }
-
     &.ac-input--error {
       border-color: rgb(var(--ac-danger));
-    }
-
-    &.ac-input--error + .ac-input-helper-text {
-      color: rgb(var(--ac-danger));
-    }
-
-    &.ac-input--success {
-      border-color: rgb(var(--ac-success));
-    }
-
-    &.ac-input--success + .ac-input-helper-text {
-      color: rgb(var(--ac-success));
     }
   }
 
