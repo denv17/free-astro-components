@@ -66,6 +66,9 @@ const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
 
     &:focus {
       outline-color: var(--ac-outline-color);
+      outline-style: var(--ac-outline-style);
+      outline-width: var(--ac-outline-width);
+      outline-offset: var(--ac-outline-offset);
     }
 
     &:checked + .ac-switch-dot:first-of-type + .ac-switch-label {

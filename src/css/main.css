@@ -93,26 +93,6 @@
   --ac-rounded-3xl: 1.5rem;
   --ac-rounded-4xl: 2rem;
   --ac-rounded-full: 9999px;
-
-  /* Button */
-  --ac-btn-border-radius: var(--ac-rounded-xl);
-  --ac-btn-font-weight: var(--ac-font-bold);
-  --ac-btn-gap: var(--ac-spacing-2);
-  --ac-btn-icon-medium-size: var(--ac-spacing-12);
-  --ac-btn-icon-small-size: var(--ac-spacing-8);
-  --ac-btn-medium-font-size: var(--ac-text-sm);
-  --ac-btn-medium-height: var(--ac-spacing-12);
-  --ac-btn-medium-icon-size: var(--ac-spacing-6);
-  --ac-btn-medium-padding: var(--ac-spacing-7);
-  --ac-btn-small-font-size: var(--ac-text-xs);
-  --ac-btn-small-height: var(--ac-spacing-8);
-  --ac-btn-small-icon-size: var(--ac-spacing-5);
-  --ac-btn-small-padding: var(--ac-spacing-6);
-
-  /* Input */
-  --ac-input-border-radius: var(--ac-rounded-xl);
-  --ac-input-padding: var(--ac-spacing-4);
-  --ac-input-height: var(--ac-spacing-12);
 }
 
 *,
@@ -121,25 +101,4 @@
   box-sizing: border-box;
   border-width: 0;
   border-style: solid;
-}
-
-*:focus {
-  outline-color: transparent;
-  outline-style: var(--ac-outline-style);
-  outline-width: var(--ac-outline-width);
-  outline-offset: var(--ac-outline-offset);
-}
-
-*:focus-visible {
-  outline-color: var(--ac-outline-color);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: rgb(var(--ac-gray-300));
-}
-
-.ac-input-wrapper .ac-input:read-only,
-.ac-textarea-wrapper .ac-textarea:read-only {
-  background-color: rgb(var(--ac-gray-100));
 }

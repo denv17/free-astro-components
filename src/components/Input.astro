@@ -1,5 +1,6 @@
 ---
 import '../css/main.css'
+import '../css/input.css'
 import Icon from './Icon.astro'
 
 interface Props {
@@ -19,6 +20,7 @@ const {
   disabled = false,
   helperText = '',
   status = 'default',
+  class: className,
   ...props
 } = Astro.props
 
@@ -28,7 +30,9 @@ const statusClasses = {
   success: 'ac-input--success',
 }[status]
 
-const inputClasses = ['ac-input', statusClasses].filter(Boolean).join(' ')
+const inputClasses = ['ac-input', statusClasses, className]
+  .filter(Boolean)
+  .join(' ')
 ---
 
 <div class="ac-input-wrapper">

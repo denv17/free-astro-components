@@ -82,6 +82,9 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
 
     &:focus {
       outline-color: var(--ac-outline-color);
+      outline-style: var(--ac-outline-style);
+      outline-width: var(--ac-outline-width);
+      outline-offset: var(--ac-outline-offset);
     }
 
     &.ac-radio--error:not(:checked) {

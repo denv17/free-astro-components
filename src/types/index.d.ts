@@ -21,3 +21,7 @@ export const Switch: Switch
 // Input component
 export type Input = typeof import('../index.js').Input
 export const Input: Input
+
+// Textarea component
+export type Textarea = typeof import('../index.js').Textarea
+export const Textarea: Textarea

@@ -1,0 +1,160 @@
+---
+import '../css/main.css'
+import '../css/textarea.css'
+import Icon from './Icon.astro'
+
+interface Props {
+  icon?: string
+  label?: string
+  value?: string
+  placeholder?: string
+  disabled?: boolean
+  helperText?: string
+  status?: 'default' | 'error' | 'success'
+  class?: string
+}
+
+const {
+  icon,
+  label,
+  value,
+  placeholder = '',
+  disabled = false,
+  helperText = '',
+  status = 'default',
+  class: className,
+  ...props
+} = Astro.props
+
+const statusClasses = {
+  default: '',
+  error: 'ac-textarea--error',
+  success: 'ac-textarea--success',
+}[status]
+
+const inputClasses = ['ac-textarea', statusClasses, className]
+  .filter(Boolean)
+  .join(' ')
+---
+
+<div class="ac-textarea-wrapper">
+  {label && <label class="ac-textarea-label">{label}</label>}
+  <div>
+    <textarea
+      class={inputClasses}
+      placeholder={placeholder}
+      disabled={disabled}
+      {...props}>{value}</textarea
+    >
+    {
+      icon && (
+        <Icon icon={icon} class="ac-textarea-icon ac-textarea-icon--right" />
+      )
+    }
+  </div>
+  {
+    helperText && (
+      <span class="ac-textarea-helper-text">
+        {status === 'error' && <Icon icon="warning" />}
+        {status === 'success' && <Icon icon="check-circle" />}
+        {helperText}
+      </span>
+    )
+  }
+</div>
+
+<style>
+  .ac-textarea-wrapper {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ac-font-sans);
+    gap: var(--ac-spacing-2);
+
+    > div {
+      position: relative;
+    }
+
+    &:has(.ac-textarea:disabled) {
+      opacity: var(--ac-disabled-opacity);
+      pointer-events: none;
+    }
+
+    &:has(.ac-textarea--error) .ac-textarea-helper-text {
+      color: rgb(var(--ac-danger));
+    }
+
+    &:has(.ac-textarea--success) .ac-textarea-helper-text {
+      color: rgb(var(--ac-success));
+    }
+
+    &:has(.ac-textarea-icon--right) .ac-textarea {
+      padding-right: var(--ac-spacing-12);
+    }
+  }
+
+  .ac-textarea {
+    appearance: none;
+    background-color: rgb(var(--ac-white));
+    background-image: none;
+    border-color: rgb(var(--ac-gray-100));
+    border-radius: var(--ac-textarea-border-radius);
+    border-width: var(--ac-border-2);
+    color: var(--ac-dark);
+    font-family: var(--ac-font-sans);
+    font-size: var(--ac-text-base);
+    form-sizing: content;
+    line-height: var(--ac-leading-normal);
+    padding: var(--ac-textarea-padding-y) var(--ac-textarea-padding-x);
+    resize: vertical;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+
+    &:hover {
+      border-color: rgb(var(--ac-gray-200));
+    }
+
+    &:focus {
+      border-color: var(--ac-primary-hover);
+      outline: none;
+    }
+
+    &:disabled {
+      background-color: rgb(var(--ac-gray-100));
+    }
+
+    &.ac-textarea--error {
+      border-color: rgb(var(--ac-danger));
+    }
+  }
+
+  .ac-textarea-label {
+    color: rgb(var(--ac-gray-400));
+    font-size: var(--ac-text-sm);
+  }
+
+  .ac-textarea-helper-text {
+    align-items: center;
+    color: rgb(var(--ac-gray-300));
+    display: flex;
+    font-size: var(--ac-text-sm);
+    gap: var(--ac-spacing-1);
+
+    svg {
+      flex-shrink: 0;
+      height: var(--ac-spacing-4);
+      width: var(--ac-spacing-4);
+    }
+  }
+
+  .ac-textarea-icon {
+    color: rgb(var(--ac-gray-300));
+    height: var(--ac-spacing-6);
+    position: absolute;
+    top: var(--ac-textarea-padding-y);
+    width: var(--ac-spacing-6);
+
+    &.ac-textarea-icon--right {
+      right: var(--ac-spacing-4);
+    }
+  }
+</style>

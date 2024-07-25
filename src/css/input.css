@@ -1,0 +1,13 @@
+:root {
+  --ac-input-border-radius: var(--ac-rounded-xl);
+  --ac-input-padding: var(--ac-spacing-4);
+  --ac-input-height: var(--ac-spacing-12);
+}
+
+input::placeholder {
+  color: rgb(var(--ac-gray-300));
+}
+
+.ac-input-wrapper .ac-input:read-only {
+  background-color: rgb(var(--ac-gray-100));
+}

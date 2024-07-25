@@ -67,6 +67,21 @@ const buttonClasses = [
 }
 
 <style>
+  :root {
+    --ac-btn-border-radius: var(--ac-rounded-xl);
+    --ac-btn-font-weight: var(--ac-font-bold);
+    --ac-btn-gap: var(--ac-spacing-2);
+    --ac-btn-icon-medium-size: var(--ac-spacing-12);
+    --ac-btn-icon-small-size: var(--ac-spacing-8);
+    --ac-btn-medium-font-size: var(--ac-text-sm);
+    --ac-btn-medium-height: var(--ac-spacing-12);
+    --ac-btn-medium-icon-size: var(--ac-spacing-6);
+    --ac-btn-medium-padding: var(--ac-spacing-7);
+    --ac-btn-small-font-size: var(--ac-text-xs);
+    --ac-btn-small-height: var(--ac-spacing-8);
+    --ac-btn-small-icon-size: var(--ac-spacing-5);
+    --ac-btn-small-padding: var(--ac-spacing-6);
+  }
   .ac-btn {
     -webkit-appearance: button;
     align-items: center;
@@ -89,6 +104,13 @@ const buttonClasses = [
       cursor: default;
       pointer-events: none;
     }
+
+    &:focus {
+      outline-color: transparent;
+      outline-style: var(--ac-outline-style);
+      outline-width: var(--ac-outline-width);
+      outline-offset: var(--ac-outline-offset);
+    }
   }
 
   .ac-btn--primary {
@@ -104,6 +126,10 @@ const buttonClasses = [
     &:active {
       background-color: var(--ac-primary-active);
       border-color: var(--ac-primary-active);
+    }
+
+    &:focus-visible {
+      outline-color: var(--ac-outline-color);
     }
   }
 

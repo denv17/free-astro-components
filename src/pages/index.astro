@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Input from '../components/Input.astro'
+import Textarea from '../components/Textarea.astro'
 ---
 
 <Layout title="Welcome to Astro.">
@@ -76,6 +77,65 @@ import Input from '../components/Input.astro'
         <Input
           icon="star"
           label="Input label"
+          placeholder="Input with icon"
+          helperText="Helper text"
+        />
+      </div>
+
+      <h2>Textarea</h2>
+      <div class="controls-wrapper">
+        <Textarea
+          label="Textarea label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+        />
+
+        <Textarea
+          label="Textarea label"
+          value="Value"
+          placeholder="Placeholder"
+          helperText="Helper text"
+        />
+
+        <Textarea
+          label="Textarea label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          disabled
+        />
+
+        <Textarea
+          label="Textarea label"
+          value="Value"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          disabled
+        />
+
+        <Textarea
+          label="Textarea label"
+          value="Value"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          readonly
+        />
+
+        <Textarea
+          label="Textarea label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          status="error"
+        />
+
+        <Textarea
+          label="Textarea label"
+          placeholder="Placeholder"
+          helperText="Helper text"
+          status="success"
+        />
+        <Textarea
+          icon="star"
+          label="Textarea label"
           placeholder="Input with icon"
           helperText="Helper text"
         />

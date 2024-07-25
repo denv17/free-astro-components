@@ -1,0 +1,14 @@
+:root {
+  --ac-textarea-border-radius: var(--ac-rounded-xl);
+  --ac-textarea-padding-x: var(--ac-spacing-4);
+  --ac-textarea-padding-y: var(--ac-spacing-3);
+  --ac-textarea-height: var(--ac-spacing-12);
+}
+
+textarea::placeholder {
+  color: rgb(var(--ac-gray-300));
+}
+
+.ac-textarea-wrapper .ac-textarea:read-only {
+  background-color: rgb(var(--ac-gray-100));
+}
