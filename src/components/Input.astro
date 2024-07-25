@@ -35,8 +35,8 @@ const inputClasses = ['ac-input', statusClasses, className]
   .join(' ')
 ---
 
-<div class="ac-input-wrapper">
-  {label && <label class="ac-input-label">{label}</label>}
+<label class="ac-input-wrapper">
+  {label && <span class="ac-input-label">{label}</span>}
   <div>
     {
       props && props.type === 'search' && (
@@ -72,7 +72,7 @@ const inputClasses = ['ac-input', statusClasses, className]
       </span>
     )
   }
-</div>
+</label>
 
 <style>
   .ac-input-wrapper {

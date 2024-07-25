@@ -37,8 +37,8 @@ const inputClasses = ['ac-textarea', statusClasses, className]
   .join(' ')
 ---
 
-<div class="ac-textarea-wrapper">
-  {label && <label class="ac-textarea-label">{label}</label>}
+<label class="ac-textarea-wrapper">
+  {label && <span class="ac-textarea-label">{label}</span>}
   <div>
     <textarea
       class={inputClasses}
@@ -61,7 +61,7 @@ const inputClasses = ['ac-textarea', statusClasses, className]
       </span>
     )
   }
-</div>
+</label>
 
 <style>
   .ac-textarea-wrapper {
@@ -72,6 +72,7 @@ const inputClasses = ['ac-textarea', statusClasses, className]
 
     > div {
       position: relative;
+      display: flex;
     }
 
     &:has(.ac-textarea:disabled) {
