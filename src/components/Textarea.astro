@@ -7,8 +7,6 @@ interface Props {
   icon?: string
   label?: string
   value?: string
-  placeholder?: string
-  disabled?: boolean
   helperText?: string
   status?: 'default' | 'error' | 'success'
   class?: string
@@ -18,8 +16,6 @@ const {
   icon,
   label,
   value,
-  placeholder = '',
-  disabled = false,
   helperText = '',
   status = 'default',
   class: className,
@@ -40,12 +36,7 @@ const inputClasses = ['ac-textarea', statusClasses, className]
 <label class="ac-textarea-wrapper">
   {label && <span class="ac-textarea-label">{label}</span>}
   <div>
-    <textarea
-      class={inputClasses}
-      placeholder={placeholder}
-      disabled={disabled}
-      {...props}>{value}</textarea
-    >
+    <textarea class={inputClasses} {...props}>{value}</textarea>
     {
       icon && (
         <Icon icon={icon} class="ac-textarea-icon ac-textarea-icon--right" />

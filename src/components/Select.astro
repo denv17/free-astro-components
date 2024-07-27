@@ -1,0 +1,372 @@
+---
+import '../css/main.css'
+import Icon from './Icon.astro'
+
+interface Props {
+  label?: string
+  placeholder?: string
+  helperText?: string
+  status?: 'default' | 'error' | 'success'
+  options?: { label: string; value: string | number; selected?: boolean }[]
+  class?: string
+}
+
+const {
+  label,
+  placeholder = '',
+  helperText,
+  status = 'default',
+  options = [
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 2', value: '2' },
+    { label: 'Option 3', value: '3' },
+  ],
+  class: className,
+  ...props
+} = Astro.props
+
+const hasSelectedOption = options.some((option) => option.selected)
+
+const statusClasses = {
+  default: '',
+  error: 'ac-select--error',
+  success: 'ac-select--success',
+}[status]
+
+const selectClasses = [
+  'ac-select',
+  statusClasses,
+  className,
+  hasSelectedOption ? 'is-selected' : '',
+]
+  .filter(Boolean)
+  .join(' ')
+---
+
+<label class="ac-select-wrapper">
+  {label && <span class="ac-select-label">{label}</span>}
+
+  <div>
+    <select class={selectClasses} {...props}>
+      {
+        hasSelectedOption ? (
+          <option disabled hidden>
+            {placeholder}
+          </option>
+        ) : (
+          <option disabled selected hidden>
+            {placeholder}
+          </option>
+        )
+      }
+
+      {
+        options.map((option) => (
+          <option value={option.value} selected={option.selected}>
+            {option.label}
+          </option>
+        ))
+      }
+    </select>
+
+    <Icon icon="chevron-down" class="ac-select-icon" />
+
+    <div class="ac-select-popover">
+      <div>
+        <ul class="ac-select-list">
+          {
+            options.map((option) => (
+              <li>
+                <button disabled class={option.selected ? 'is-selected' : ''}>
+                  <span>{option.label}</span>
+                  <Icon icon="check" />
+                </button>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  {
+    helperText && (
+      <span class="ac-select-helper-text">
+        {status === 'error' && <Icon icon="warning" />}
+        {status === 'success' && <Icon icon="check-circle" />}
+        {helperText}
+      </span>
+    )
+  }
+</label>
+
+<style>
+  :root {
+    --ac-select-border-radius: var(--ac-rounded-xl);
+    --ac-select-padding: var(--ac-spacing-4);
+    --ac-select-height: var(--ac-spacing-12);
+  }
+
+  .ac-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ac-font-sans);
+    gap: var(--ac-spacing-2);
+
+    > div {
+      position: relative;
+    }
+
+    &:has(.ac-select.is-open) .ac-select-icon {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    &:has(.ac-select.is-open) .ac-select-popover {
+      grid-template-rows: 1fr;
+    }
+
+    &:has(.ac-select:disabled) {
+      opacity: var(--ac-disabled-opacity);
+      pointer-events: none;
+    }
+
+    &:has(.ac-select--error) .ac-select-helper-text {
+      color: rgb(var(--ac-danger));
+    }
+
+    &:has(.ac-select--success) .ac-select-helper-text {
+      color: rgb(var(--ac-success));
+    }
+  }
+
+  .ac-select {
+    appearance: none;
+    background-color: rgb(var(--ac-white));
+    background-image: none;
+    border-color: rgb(var(--ac-gray-100));
+    border-radius: var(--ac-select-border-radius);
+    border-width: var(--ac-border-2);
+    color: rgb(var(--ac-gray-300));
+    cursor: pointer;
+    font-size: var(--ac-text-base);
+    font-weight: var(--ac-font-normal);
+    height: var(--ac-select-height);
+    line-height: var(--ac-leading-normal);
+    padding-left: var(--ac-select-padding);
+    padding-right: var(--ac-select-padding);
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+
+    &.is-selected {
+      color: rgb(var(--ac-dark));
+    }
+
+    &.is-open,
+    &.is-open:hover {
+      border-color: var(--ac-primary-hover);
+    }
+
+    &:hover {
+      border-color: rgb(var(--ac-gray-200));
+    }
+
+    &:focus,
+    &.ac-select--error:focus,
+    &:focus:hover {
+      border-color: var(--ac-primary-hover);
+      outline: none;
+    }
+
+    &:disabled {
+      background-color: rgb(var(--ac-gray-100));
+    }
+
+    &.ac-select--error,
+    &.ac-select--error:hover {
+      border-color: rgb(var(--ac-danger));
+    }
+  }
+
+  .ac-select-label {
+    color: rgb(var(--ac-gray-400));
+    font-size: var(--ac-text-sm);
+  }
+
+  .ac-select-helper-text {
+    align-items: center;
+    color: rgb(var(--ac-gray-300));
+    display: flex;
+    font-size: var(--ac-text-sm);
+    gap: var(--ac-spacing-1);
+
+    svg {
+      flex-shrink: 0;
+      height: var(--ac-spacing-4);
+      width: var(--ac-spacing-4);
+    }
+  }
+
+  .ac-select-icon {
+    color: rgb(var(--ac-gray-300));
+    position: absolute;
+    right: var(--ac-select-padding);
+    top: 50%;
+    transform-origin: center;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .ac-select-popover {
+    display: grid;
+    grid-template-rows: 0fr;
+    left: 0;
+    position: absolute;
+    position: absolute;
+    right: 0;
+    top: calc(100% + var(--ac-spacing-1));
+    transition: grid-template-rows 0.3s ease-in-out;
+    z-index: 1;
+
+    > div {
+      background-color: rgb(var(--ac-white));
+      border-radius: var(--ac-select-border-radius);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      list-style: none;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+    }
+  }
+
+  .ac-select-list {
+    -ms-overflow-style: none;
+    border-color: rgb(var(--ac-gray-100));
+    border-radius: var(--ac-rounded-xl);
+    border-width: var(--ac-border-1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ac-spacing-1);
+    list-style: none;
+    margin: 0;
+    max-height: 14.188rem;
+    overflow-y: auto;
+    padding: var(--ac-spacing-1);
+    scrollbar-width: none;
+
+    > li > button {
+      align-items: center;
+      background-color: rgb(var(--ac-white));
+      border-radius: var(--ac-rounded-lg);
+      color: rgb(var(--ac-gray-400));
+      cursor: pointer;
+      display: flex;
+      font-size: var(--ac-text-sm);
+      justify-content: space-between;
+      padding: var(--ac-spacing-2) var(--ac-select-padding);
+      transition: all 0.3s ease-in-out;
+      width: 100%;
+
+      > svg {
+        color: rgb(var(--ac-primary));
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        width: var(--ac-spacing-6);
+      }
+
+      &:hover {
+        color: var(--ac-primary-hover);
+      }
+
+      &:hover,
+      &:focus {
+        background-color: rgba(var(--ac-primary), 0.1);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &.is-selected {
+        background-color: rgba(var(--ac-primary), 0.1);
+        color: rgb(var(--ac-dark));
+
+        > svg {
+          opacity: 1;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  import { DOMLoaded } from '../utils/utils'
+  import {
+    closeSelect,
+    openSelect,
+    selectOption,
+    handleDocumentMousedown,
+    handleDocumentKeydown,
+  } from '../utils/select.ts'
+
+  DOMLoaded(() => {
+    const selects = document.querySelectorAll('.ac-select')
+
+    selects.forEach((item) => {
+      const select = item as HTMLSelectElement
+      const selectWrapper = select.closest('.ac-select-wrapper')
+      const popover = selectWrapper?.querySelector(
+        '.ac-select-popover'
+      ) as HTMLElement
+      const options = popover?.querySelectorAll(
+        '.ac-select-list li button'
+      ) as NodeListOf<HTMLButtonElement>
+
+      let isOpen = false
+
+      const setIsOpen = (value: boolean) => {
+        isOpen = value
+      }
+
+      select.addEventListener('mousedown', (event) =>
+        openSelect(event, options, select).then(() => {
+          setIsOpen(true)
+        })
+      )
+
+      select.addEventListener('keydown', (event) => {
+        if (
+          event.key === 'Enter' ||
+          event.code === 'Space' ||
+          event.key === 'ArrowDown' ||
+          event.key === 'ArrowUp'
+        )
+          openSelect(event, options, select).then(() => {
+            setIsOpen(true)
+          })
+      })
+
+      document.addEventListener('mousedown', (event) => {
+        handleDocumentMousedown(
+          event,
+          options,
+          select,
+          popover,
+          isOpen,
+          setIsOpen
+        )
+      })
+
+      document.addEventListener('keydown', (event) => {
+        handleDocumentKeydown(event, options, select, isOpen, setIsOpen)
+      })
+
+      options?.forEach((option, index) => {
+        option.addEventListener('click', () => {
+          selectOption(index, options, option, select)
+          closeSelect(options, select)
+          setIsOpen(false)
+        })
+      })
+    })
+  })
+</script>

@@ -25,3 +25,7 @@ export const Input: Input
 // Textarea component
 export type Textarea = typeof import('../index.js').Textarea
 export const Textarea: Textarea
+
+// Select component
+export type Select = typeof import('../index.js').Select
+export const Select: Select

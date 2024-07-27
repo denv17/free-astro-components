@@ -6,8 +6,6 @@ import Icon from './Icon.astro'
 interface Props {
   icon?: string
   label?: string
-  placeholder?: string
-  disabled?: boolean
   helperText?: string
   status?: 'default' | 'error' | 'success'
   class?: string
@@ -16,8 +14,6 @@ interface Props {
 const {
   icon,
   label,
-  placeholder = '',
-  disabled = false,
   helperText = '',
   status = 'default',
   class: className,
@@ -43,12 +39,7 @@ const inputClasses = ['ac-input', statusClasses, className]
         <Icon icon="search" class="ac-input-icon ac-input-icon--left" />
       )
     }
-    <input
-      class={inputClasses}
-      placeholder={placeholder}
-      disabled={disabled}
-      {...props}
-    />
+    <input class={inputClasses} {...props} />
     {
       icon && props.type !== 'password' && (
         <Icon icon={icon} class="ac-input-icon ac-input-icon--right" />
@@ -218,7 +209,8 @@ const inputClasses = ['ac-input', statusClasses, className]
 </style>
 
 <script>
-  import { DOMLoaded, toggleInputPassword } from '../utils/utils.ts'
+  import { DOMLoaded } from '../utils/utils.ts'
+  import { toggleInputPassword } from '../utils/input'
 
   DOMLoaded(() => {
     const inputPasswordButtons = document.querySelectorAll(
