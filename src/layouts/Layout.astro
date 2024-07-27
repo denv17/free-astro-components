@@ -6,16 +6,11 @@ interface Props {
   class?: string
 }
 
-const { title, class: className = 'dark' } = Astro.props
-
-const colorScheme = {
-  light: 'light',
-  dark: 'dark',
-}[className]
+const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en" class={className} style={`color-scheme: ${colorScheme};`}>
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
