@@ -141,12 +141,12 @@ const selectClasses = [
 
   .ac-select {
     appearance: none;
-    background-color: rgb(var(--ac-white));
+    background-color: rgb(var(--ac-color-100));
     background-image: none;
-    border-color: rgb(var(--ac-gray-100));
+    border-color: rgb(var(--ac-color-200));
     border-radius: var(--ac-select-border-radius);
     border-width: var(--ac-border-2);
-    color: rgb(var(--ac-gray-300));
+    color: rgb(var(--ac-color-400));
     cursor: pointer;
     font-size: var(--ac-text-base);
     font-weight: var(--ac-font-normal);
@@ -158,7 +158,7 @@ const selectClasses = [
     width: 100%;
 
     &.is-selected {
-      color: rgb(var(--ac-dark));
+      color: rgb(var(--ac-color-700));
     }
 
     &.is-open,
@@ -167,7 +167,7 @@ const selectClasses = [
     }
 
     &:hover {
-      border-color: rgb(var(--ac-gray-200));
+      border-color: rgb(var(--ac-color-300));
     }
 
     &:focus,
@@ -178,7 +178,7 @@ const selectClasses = [
     }
 
     &:disabled {
-      background-color: rgb(var(--ac-gray-100));
+      background-color: rgb(var(--ac-color-200));
     }
 
     &.ac-select--error,
@@ -188,13 +188,13 @@ const selectClasses = [
   }
 
   .ac-select-label {
-    color: rgb(var(--ac-gray-400));
+    color: rgb(var(--ac-color-500));
     font-size: var(--ac-text-sm);
   }
 
   .ac-select-helper-text {
     align-items: center;
-    color: rgb(var(--ac-gray-300));
+    color: rgb(var(--ac-color-400));
     display: flex;
     font-size: var(--ac-text-sm);
     gap: var(--ac-spacing-1);
@@ -207,7 +207,7 @@ const selectClasses = [
   }
 
   .ac-select-icon {
-    color: rgb(var(--ac-gray-300));
+    color: rgb(var(--ac-color-400));
     position: absolute;
     right: var(--ac-select-padding);
     top: 50%;
@@ -228,7 +228,7 @@ const selectClasses = [
     z-index: 1;
 
     > div {
-      background-color: rgb(var(--ac-white));
+      background-color: rgb(var(--ac-color-100));
       border-radius: var(--ac-select-border-radius);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       list-style: none;
@@ -240,7 +240,7 @@ const selectClasses = [
 
   .ac-select-list {
     -ms-overflow-style: none;
-    border-color: rgb(var(--ac-gray-100));
+    border-color: rgb(var(--ac-color-200));
     border-radius: var(--ac-rounded-xl);
     border-width: var(--ac-border-1);
     display: flex;
@@ -255,9 +255,9 @@ const selectClasses = [
 
     > li > button {
       align-items: center;
-      background-color: rgb(var(--ac-white));
+      background-color: rgb(var(--ac-color-100));
       border-radius: var(--ac-rounded-lg);
-      color: rgb(var(--ac-gray-400));
+      color: rgb(var(--ac-color-500));
       cursor: pointer;
       display: flex;
       font-size: var(--ac-text-sm);
@@ -288,7 +288,7 @@ const selectClasses = [
 
       &.is-selected {
         background-color: rgba(var(--ac-primary), 0.1);
-        color: rgb(var(--ac-dark));
+        color: rgb(var(--ac-color-700));
 
         > svg {
           opacity: 1;

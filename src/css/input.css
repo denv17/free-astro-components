@@ -5,9 +5,9 @@
 }
 
 input::placeholder {
-  color: rgb(var(--ac-gray-300));
+  color: rgb(var(--ac-color-400));
 }
 
 .ac-input-wrapper .ac-input:read-only {
-  background-color: rgb(var(--ac-gray-100));
+  background-color: rgb(var(--ac-color-200));
 }

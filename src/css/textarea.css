@@ -6,9 +6,9 @@
 }
 
 textarea::placeholder {
-  color: rgb(var(--ac-gray-300));
+  color: rgb(var(--ac-color-400));
 }
 
 .ac-textarea-wrapper .ac-textarea:read-only {
-  background-color: rgb(var(--ac-gray-100));
+  background-color: rgb(var(--ac-color-200));
 }

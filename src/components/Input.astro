@@ -101,12 +101,12 @@ const inputClasses = ['ac-input', statusClasses, className]
 
   .ac-input {
     appearance: none;
-    background-color: rgb(var(--ac-white));
+    background-color: rgb(var(--ac-color-100));
     background-image: none;
-    border-color: rgb(var(--ac-gray-100));
+    border-color: rgb(var(--ac-color-200));
     border-radius: var(--ac-input-border-radius);
     border-width: var(--ac-border-2);
-    color: var(--ac-dark);
+    color: var(--ac-color-700);
     font-size: var(--ac-text-base);
     height: var(--ac-input-height);
     line-height: var(--ac-leading-normal);
@@ -116,7 +116,7 @@ const inputClasses = ['ac-input', statusClasses, className]
     width: 100%;
 
     &:hover {
-      border-color: rgb(var(--ac-gray-200));
+      border-color: rgb(var(--ac-color-300));
     }
 
     &:focus {
@@ -125,7 +125,7 @@ const inputClasses = ['ac-input', statusClasses, className]
     }
 
     &:disabled {
-      background-color: rgb(var(--ac-gray-100));
+      background-color: rgb(var(--ac-color-200));
     }
 
     &.ac-input--error {
@@ -134,13 +134,13 @@ const inputClasses = ['ac-input', statusClasses, className]
   }
 
   .ac-input-label {
-    color: rgb(var(--ac-gray-400));
+    color: rgb(var(--ac-color-500));
     font-size: var(--ac-text-sm);
   }
 
   .ac-input-helper-text {
     align-items: center;
-    color: rgb(var(--ac-gray-300));
+    color: rgb(var(--ac-color-400));
     display: flex;
     font-size: var(--ac-text-sm);
     gap: var(--ac-spacing-1);
@@ -153,7 +153,7 @@ const inputClasses = ['ac-input', statusClasses, className]
   }
 
   .ac-input-icon {
-    color: rgb(var(--ac-gray-300));
+    color: rgb(var(--ac-color-400));
     height: var(--ac-spacing-6);
     position: absolute;
     top: 50%;
@@ -173,7 +173,7 @@ const inputClasses = ['ac-input', statusClasses, className]
     appearance: none;
     background-color: transparent;
     border: none;
-    color: rgb(var(--ac-gray-300));
+    color: rgb(var(--ac-color-400));
     cursor: pointer;
     height: var(--ac-spacing-6);
     padding: 0;

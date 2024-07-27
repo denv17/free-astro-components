@@ -20,7 +20,7 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
 <style>
   .ac-radio-wrapper {
     align-items: center;
-    color: rgb(var(--ac-gray-400));
+    color: rgb(var(--ac-color-500));
     cursor: pointer;
     display: inline-flex;
     font-family: var(--ac-font-sans);
@@ -60,7 +60,7 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
     &:checked {
       background-color: rgb(var(--ac-primary));
       border-color: rgb(var(--ac-primary));
-      box-shadow: inset 0 0 0 4px rgb(var(--ac-white));
+      box-shadow: inset 0 0 0 4px rgb(var(--ac-color-100));
     }
 
     &:checked:hover {
@@ -69,7 +69,7 @@ const radioClasses = ['ac-radio', error ? 'ac-radio--error' : '', className]
     }
 
     &:checked + .ac-radio-label {
-      color: rgb(var(--ac-dark));
+      color: rgb(var(--ac-color-700));
     }
 
     &:checked:hover + .ac-radio-label {

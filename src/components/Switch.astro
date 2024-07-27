@@ -18,7 +18,7 @@ const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
 <style>
   .ac-switch-wrapper {
     align-items: center;
-    color: rgb(var(--ac-gray-400));
+    color: rgb(var(--ac-color-500));
     cursor: pointer;
     display: inline-flex;
     font-family: var(--ac-font-sans);
@@ -36,7 +36,7 @@ const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
 
   .ac-switch {
     appearance: none;
-    background-color: rgb(var(--ac-white));
+    background-color: transparent;
     border-color: rgb(var(--ac-primary));
     border-radius: var(--ac-rounded-full);
     border-style: solid;
@@ -72,7 +72,7 @@ const switchClasses = ['ac-switch', className].filter(Boolean).join(' ')
     }
 
     &:checked + .ac-switch-dot:first-of-type + .ac-switch-label {
-      color: rgb(var(--ac-dark));
+      color: rgb(var(--ac-color-700));
     }
 
     &:checked + .ac-switch-dot {

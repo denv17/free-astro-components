@@ -3,13 +3,19 @@ import '../css/main.css'
 
 interface Props {
   title: string
+  class?: string
 }
 
-const { title } = Astro.props
+const { title, class: className = 'dark' } = Astro.props
+
+const colorScheme = {
+  light: 'light',
+  dark: 'dark',
+}[className]
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class={className} style={`color-scheme: ${colorScheme};`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
