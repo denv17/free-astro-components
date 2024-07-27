@@ -11,20 +11,28 @@ Explore and utilize a variety of components that can help you build your web pro
 ### Available Components
 
 - **Icons**
-  - A set of customizable icons for various uses.
+  - A set of icons for various uses.
 - **Buttons**
   - Stylish and functional buttons for your web applications.
 - **Controls**
-  - **Checkbox**: A customizable checkbox component.
-  - **Radio**: A flexible radio button component.
+  - **Checkbox**: A checkbox component.
+  - **Radio**: A radio button component.
   - **Switch**: A toggle switch component for user interactions.
+- **Input**
+  - A versatile input component for user text entry.
+- **Textarea**
+  - A textarea component for larger text input.
+- **Select**
+  - A select dropdown component.
 
 ## Getting Started
 
 1. **Visit the Website:**
+
    - [Explore the Collection](https://free-astro-components.vercel.app/)
 
 2. **Installation:**
+
    - To use these components in your Astro.js project, follow the instructions on the website.
 
 3. **Usage:**
