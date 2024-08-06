@@ -29,3 +29,11 @@ export const Textarea: Textarea
 // Select component
 export type Select = typeof import('../index.js').Select
 export const Select: Select
+
+// Tab component
+export type Tab = typeof import('../index.js').Tab
+export const Tab: Tab
+
+// TabItem component
+export type TabItem = typeof import('../index.js').TabItem
+export const TabItem: TabItem

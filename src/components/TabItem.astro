@@ -1,0 +1,17 @@
+---
+const { active } = Astro.props
+---
+
+<div data-tab-pane data-active={active} class="ac-tab-pane">
+  <slot />
+</div>
+
+<style>
+  .ac-tab-pane {
+    display: none;
+
+    &[data-active] {
+      display: block;
+    }
+  }
+</style>

@@ -53,6 +53,7 @@
   /* Font weight */
   --ac-font-light: 300;
   --ac-font-normal: 400;
+  --ac-font-medium: 500;
   --ac-font-bold: 700;
 
   /* Line height */

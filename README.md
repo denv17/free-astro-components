@@ -24,6 +24,9 @@ Explore and utilize a variety of components that can help you build your web pro
   - A textarea component for larger text input.
 - **Select**
   - A select dropdown component.
+- **Tab**
+  - A tab component for organizing content into tabs.
+  - **TabItem**: A subcomponent for individual tab items.
 
 ## Getting Started
 
@@ -33,14 +36,14 @@ Explore and utilize a variety of components that can help you build your web pro
 
 2. **Installation:**
 
-   - To use these components in your Astro.js project, follow the instructions on the website.
+   - To use these components in your Astro.js project, follow the [installation instructions](https://free-astro-components.vercel.app/guide/installation).
 
 3. **Usage:**
    - Detailed documentation and code examples are available on the website to help you integrate and customize each component.
 
 ## Documentation
 
-I’m currently working on comprehensive documentation for the components. Please check back soon for detailed guides and information.
+For detailed guides and information, visit the [Documentation](https://free-astro-components.vercel.app/guide/installation) page.
 
 ## Credits
 

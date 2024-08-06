@@ -1,205 +1,44 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Input from '../components/Input.astro'
-import Textarea from '../components/Textarea.astro'
-import Select from '../components/Select.astro'
+import Tab from '../components/Tab.astro'
+import TabItem from '../components/TabItem.astro'
 ---
 
-<Layout title="Welcome to Astro.">
-  <main class="content">
-    <h1>Controls</h1>
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Free Astro Components</title>
+  </head>
+  <body>
+    <main class="content">
+      <h1>Tabs</h1>
 
-    <div>
-      <h2>Inputs</h2>
       <div class="controls-wrapper">
-        <Input
-          label="Input label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-        />
-
-        <Input
-          label="Input label"
-          value="Value"
-          placeholder="Placeholder"
-          helperText="Helper text"
-        />
-
-        <Input
-          label="Input label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          disabled
-        />
-
-        <Input
-          label="Input label"
-          value="Value"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          disabled
-        />
-
-        <Input
-          label="Input label"
-          value="Value"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          readonly
-        />
-
-        <Input
-          label="Input label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          status="error"
-        />
-
-        <Input
-          label="Input label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          status="success"
-        />
-
-        <Input
-          type="search"
-          label="Input label"
-          placeholder="Buscar aquí"
-          helperText="Helper text"
-        />
-
-        <Input
-          type="password"
-          label="Input label"
-          placeholder="Escribe tu contraseña"
-          helperText="Helper text"
-        />
-        <Input
-          icon="star"
-          label="Input label"
-          placeholder="Input with icon"
-          helperText="Helper text"
-        />
-      </div>
-
-      <h2>Textarea</h2>
-      <div class="controls-wrapper">
-        <Textarea
-          label="Textarea label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-        />
-
-        <Textarea
-          label="Textarea label"
-          value="Value"
-          placeholder="Placeholder"
-          helperText="Helper text"
-        />
-
-        <Textarea
-          label="Textarea label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          disabled
-        />
-
-        <Textarea
-          label="Textarea label"
-          value="Value"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          disabled
-        />
-
-        <Textarea
-          label="Textarea label"
-          value="Value"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          readonly
-        />
-
-        <Textarea
-          label="Textarea label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          status="error"
-        />
-
-        <Textarea
-          label="Textarea label"
-          placeholder="Placeholder"
-          helperText="Helper text"
-          status="success"
-        />
-        <Textarea
-          icon="star"
-          label="Textarea label"
-          placeholder="Textarea with icon"
-          helperText="Helper text"
-        />
-      </div>
-
-      <h2>Select</h2>
-      <div class="controls-wrapper">
-        <Select
-          label="Select label"
-          placeholder="Select an option"
-          helperText="Helper text"
-        />
-        <Select
-          label="Select label"
-          placeholder="Select an option"
-          options={[
-            { label: 'Option 1', value: '1' },
-            { label: 'Option 2', value: '2', selected: true },
-            { label: 'Option 3', value: '3' },
+        <Tab
+          tabs={[
+            { label: 'Tab 1', active: true },
+            { label: 'Tab 2' },
+            { label: 'Tab 2' },
           ]}
-          helperText="Helper text"
-        />
-        <Select
-          label="Select label"
-          placeholder="Select an option"
-          helperText="Helper text"
-          disabled
-        />
-        <Select
-          label="Select label"
-          placeholder="Select an option"
-          options={[
-            { label: 'Option 1', value: '1' },
-            { label: 'Option 2', value: '2', selected: true },
-            { label: 'Option 3', value: '3' },
-          ]}
-          helperText="Helper text"
-          disabled
-        />
-        <Select
-          label="Select label"
-          placeholder="Select an option"
-          helperText="Helper text"
-          status="error"
-        />
-        <Select
-          label="Select label"
-          placeholder="Select an option"
-          options={[
-            { label: 'Option 1', value: '1' },
-            { label: 'Option 2', value: '2', selected: true },
-            { label: 'Option 3', value: '3' },
-          ]}
-          helperText="Helper text"
-          status="success"
-        />
+        >
+          <TabItem active> Tab 1 </TabItem>
+          <TabItem> Tab 2 </TabItem>
+          <TabItem> Tab 3 </TabItem>
+        </Tab>
       </div>
-    </div>
-  </main>
-</Layout>
+    </main>
+  </body>
+</html>
 
 <style>
-  /*@import '../css/preflight.css';*/
+  html,
+  body {
+    margin: 0;
+  }
 
   .content {
     padding: var(--ac-spacing-8) var(--ac-spacing-8) 500px;
