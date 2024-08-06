@@ -25,5 +25,4 @@ pnpm-debug.log*
 
 # project folder
 .vscode/
-src/pages/
-src/css/preflight.css
+src/pages
