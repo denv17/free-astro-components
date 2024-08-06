@@ -2,7 +2,12 @@
 const { active } = Astro.props
 ---
 
-<div data-tab-pane data-active={active} class="ac-tab-pane">
+<div
+  data-tab-pane
+  aria-hidden={active ? 'false' : 'true'}
+  role="tabpanel"
+  class="ac-tab-pane"
+>
   <slot />
 </div>
 
@@ -10,7 +15,7 @@ const { active } = Astro.props
   .ac-tab-pane {
     display: none;
 
-    &[data-active] {
+    &[aria-hidden='false'] {
       display: block;
     }
   }

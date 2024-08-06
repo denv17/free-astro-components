@@ -10,14 +10,16 @@ const { tabs = [{ label: 'tab 1', active: true }, { label: 'tab 1' }] } =
 ---
 
 <div data-tab class="ac-tab">
-  <ul data-tab-header class="ac-tab-header">
+  <ul data-tab-header role="tablist" class="ac-tab-header">
     {
       tabs.map((tab) => (
         <li>
           <button
             class="ac-tab-button"
+            role="tab"
             data-tab-button
-            data-active={tab.active}
+            aria-selected={tab.active}
+            tabindex={tab.active ? 0 : -1}
           >
             {tab.label}
           </button>
@@ -70,7 +72,7 @@ const { tabs = [{ label: 'tab 1', active: true }, { label: 'tab 1' }] } =
       color: var(--ac-primary-hover);
     }
 
-    &[data-active] {
+    &[aria-selected='true'] {
       border-color: rgb(var(--ac-primary));
       color: rgb(var(--ac-primary));
       font-weight: var(--ac-font-medium);

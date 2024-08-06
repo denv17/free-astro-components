@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# project folder
+.vscode/
+src/pages/
+src/css/preflight.css

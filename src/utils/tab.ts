@@ -16,8 +16,12 @@ const desactivateAll = (
   tabButtons: NodeListOf<HTMLElement>,
   tabPanes: NodeListOf<HTMLElement>,
 ) => {
-  tabButtons.forEach((button) => button.removeAttribute('data-active'))
-  tabPanes.forEach((pane) => pane.removeAttribute('data-active'))
+  tabButtons.forEach((button) => {
+    button.setAttribute('aria-selected', 'false')
+  })
+  tabPanes.forEach((pane) => {
+    pane.setAttribute('aria-hidden', 'true')
+  })
 }
 
 const activateTab = (
@@ -27,6 +31,8 @@ const activateTab = (
 ) => {
   const index = Array.from(tabButtons).indexOf(button)
 
-  button.setAttribute('data-active', 'true')
-  if (tabPanes[index]) tabPanes[index].setAttribute('data-active', 'true')
+  button.setAttribute('aria-selected', 'true')
+  if (tabPanes[index]) {
+    tabPanes[index].setAttribute('aria-hidden', 'false')
+  }
 }

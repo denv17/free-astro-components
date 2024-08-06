@@ -1,17 +1,17 @@
 export const openSelect = (
   event: Event,
   options: NodeListOf<HTMLButtonElement>,
-  select: HTMLSelectElement
+  select: HTMLSelectElement,
 ): Promise<void> => {
   event.preventDefault()
-  select.classList.add('is-open')
+  select.setAttribute('aria-expanded', 'true')
 
   return new Promise((resolve) => {
     let hasSelectedOption = false
 
     options.forEach((option: HTMLButtonElement) => {
       option.removeAttribute('disabled')
-      if (option.classList.contains('is-selected')) {
+      if (option.getAttribute('aria-selected') === 'true') {
         hasSelectedOption = true
         option.focus()
       }
@@ -27,9 +27,9 @@ export const openSelect = (
 
 export const closeSelect = (
   options: NodeListOf<HTMLButtonElement>,
-  select: HTMLSelectElement
+  select: HTMLSelectElement,
 ) => {
-  select.classList.remove('is-open')
+  select.setAttribute('aria-expanded', 'false')
   options.forEach((option: HTMLButtonElement) => {
     option.setAttribute('disabled', 'disabled')
   })
@@ -39,12 +39,14 @@ export const selectOption = (
   index: number,
   options: NodeListOf<HTMLButtonElement>,
   option: Element,
-  select: HTMLSelectElement
+  select: HTMLSelectElement,
 ) => {
   select.selectedIndex = index + 1
-  select.classList.add('is-selected')
-  options.forEach((option: Element) => option.classList.remove('is-selected'))
-  option.classList.add('is-selected')
+  select.setAttribute('data-selected', 'true')
+  options.forEach((option: Element) => {
+    option.setAttribute('aria-selected', 'false')
+  })
+  option.setAttribute('aria-selected', 'true')
 }
 
 export const handleDocumentMousedown = (
@@ -53,7 +55,7 @@ export const handleDocumentMousedown = (
   select: HTMLSelectElement,
   popover: HTMLElement,
   isOpen: boolean,
-  setIsOpen: (isOpen: boolean) => void
+  setIsOpen: (isOpen: boolean) => void,
 ) => {
   if (!isOpen) return
 
@@ -72,13 +74,13 @@ export const handleDocumentKeydown = (
   options: NodeListOf<HTMLButtonElement>,
   select: HTMLSelectElement,
   isOpen: boolean,
-  setIsOpen: (isOpen: boolean) => void
+  setIsOpen: (isOpen: boolean) => void,
 ) => {
   if (!isOpen) return
 
   const activeElement = document.activeElement as HTMLElement
   const focusedOption = Array.from(options).indexOf(
-    activeElement as HTMLButtonElement
+    activeElement as HTMLButtonElement,
   )
 
   if (event.key === 'Escape') {
@@ -99,10 +101,9 @@ export const handleDocumentKeydown = (
 export const focusNextOption = (
   currentIndex: number,
   options: NodeListOf<HTMLButtonElement>,
-  direction: number
+  direction: number,
 ) => {
   if (currentIndex === -1) return
-  const nextIndex =
-    (currentIndex + direction + options.length) % options.length
+  const nextIndex = (currentIndex + direction + options.length) % options.length
   options[nextIndex].focus()
 }

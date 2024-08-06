@@ -1,9 +1,12 @@
-export const toggleInputPassword = (button: Element, input: HTMLInputElement) => {
-  if (button.classList.contains('is-visible')) {
+export const toggleInputPassword = (
+  button: Element,
+  input: HTMLInputElement,
+) => {
+  if (button.getAttribute('data-is-visible') === 'true') {
     input.type = 'password'
-    button.classList.remove('is-visible')
+    button.setAttribute('data-is-visible', 'false')
   } else {
     input.type = 'text'
-    button.classList.add('is-visible')
+    button.setAttribute('data-is-visible', 'true')
   }
 }

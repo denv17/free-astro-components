@@ -31,7 +31,10 @@ const inputClasses = ['ac-input', statusClasses, className]
   .join(' ')
 ---
 
-<label class="ac-input-wrapper">
+<label
+  data-input-password-wrapper={props.type === 'password'}
+  class="ac-input-wrapper"
+>
   {label && <span class="ac-input-label">{label}</span>}
   <div>
     {
@@ -39,7 +42,11 @@ const inputClasses = ['ac-input', statusClasses, className]
         <Icon icon="search" class="ac-input-icon ac-input-icon--left" />
       )
     }
-    <input class={inputClasses} {...props} />
+    <input
+      data-input-password={props.type === 'password'}
+      class={inputClasses}
+      {...props}
+    />
     {
       icon && props.type !== 'password' && (
         <Icon icon={icon} class="ac-input-icon ac-input-icon--right" />
@@ -47,7 +54,11 @@ const inputClasses = ['ac-input', statusClasses, className]
     }
     {
       props && props.type === 'password' && (
-        <button class="ac-input-password-btn">
+        <button
+          data-input-password-button
+          data-is-visible="false"
+          class="ac-input-password-btn"
+        >
           <Icon icon="eye" class="ac-input-eye" />
           <Icon icon="eye-off" class="ac-input-eye-off" />
         </button>
@@ -194,16 +205,12 @@ const inputClasses = ['ac-input', statusClasses, className]
       width: var(--ac-spacing-6);
     }
 
-    .ac-input-eye-off {
+    &[data-is-visible='false'] .ac-input-eye-off {
       display: none;
     }
 
-    &.is-visible .ac-input-eye {
+    &[data-is-visible='true'] .ac-input-eye {
       display: none;
-    }
-
-    &.is-visible .ac-input-eye-off {
-      display: block;
     }
   }
 </style>
@@ -214,17 +221,15 @@ const inputClasses = ['ac-input', statusClasses, className]
 
   DOMLoaded(() => {
     const inputPasswordButtons = document.querySelectorAll(
-      '.ac-input-password-btn'
+      '[data-input-password-button]'
     )
 
     inputPasswordButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
         event.preventDefault()
         const input = button
-          ?.closest('.ac-input-wrapper')
-          ?.querySelector('input')
-
-        if (!input) return
+          ?.closest('[data-input-password-wrapper]')
+          ?.querySelector('[data-input-password]') as HTMLInputElement
 
         toggleInputPassword(button, input)
       })

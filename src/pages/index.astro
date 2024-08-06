@@ -1,6 +1,9 @@
 ---
 import Tab from '../components/Tab.astro'
 import TabItem from '../components/TabItem.astro'
+import Checkbox from '../components/Checkbox.astro'
+import Input from '../components/Input.astro'
+import Select from '../components/Select.astro'
 ---
 
 <!doctype html>
@@ -18,7 +21,19 @@ import TabItem from '../components/TabItem.astro'
       <h1>Tabs</h1>
 
       <div class="controls-wrapper">
-        <Tab
+        <Select
+          label="Select"
+          options={[
+            { label: 'Option 1', value: '1', selected: true },
+            { label: 'Option 2', value: '2' },
+            { label: 'Option 3', value: '3' },
+          ]}
+          placeholder="Select an option"
+        />
+
+        <Input type="password" label="Input" placeholder="Type something" />
+
+        <!-- <Tab
           tabs={[
             { label: 'Tab 1', active: true },
             { label: 'Tab 2' },
@@ -28,7 +43,7 @@ import TabItem from '../components/TabItem.astro'
           <TabItem active> Tab 1 </TabItem>
           <TabItem> Tab 2 </TabItem>
           <TabItem> Tab 3 </TabItem>
-        </Tab>
+        </Tab> -->
       </div>
     </main>
   </body>

@@ -33,21 +33,22 @@ const statusClasses = {
   success: 'ac-select--success',
 }[status]
 
-const selectClasses = [
-  'ac-select',
-  statusClasses,
-  className,
-  hasSelectedOption ? 'is-selected' : '',
-]
+const selectClasses = ['ac-select', statusClasses, className]
   .filter(Boolean)
   .join(' ')
 ---
 
-<label class="ac-select-wrapper">
+<label data-select-wrapper class="ac-select-wrapper">
   {label && <span class="ac-select-label">{label}</span>}
 
   <div>
-    <select class={selectClasses} {...props}>
+    <select
+      data-select
+      aria-expanded="false"
+      data-selected={hasSelectedOption ? 'true' : 'false'}
+      class={selectClasses}
+      {...props}
+    >
       {
         hasSelectedOption ? (
           <option disabled hidden>
@@ -71,13 +72,17 @@ const selectClasses = [
 
     <Icon icon="chevron-down" class="ac-select-icon" />
 
-    <div class="ac-select-popover">
+    <div data-select-popover class="ac-select-popover">
       <div>
         <ul class="ac-select-list">
           {
             options.map((option) => (
               <li>
-                <button disabled class={option.selected ? 'is-selected' : ''}>
+                <button
+                  data-select-option
+                  disabled
+                  aria-selected={option.selected ? 'true' : 'false'}
+                >
                   <span>{option.label}</span>
                   <Icon icon="check" />
                 </button>
@@ -117,11 +122,11 @@ const selectClasses = [
       position: relative;
     }
 
-    &:has(.ac-select.is-open) .ac-select-icon {
+    &:has(.ac-select[aria-expanded='true']) .ac-select-icon {
       transform: translateY(-50%) rotate(180deg);
     }
 
-    &:has(.ac-select.is-open) .ac-select-popover {
+    &:has(.ac-select[aria-expanded='true']) .ac-select-popover {
       grid-template-rows: 1fr;
     }
 
@@ -157,12 +162,12 @@ const selectClasses = [
     transition: all 0.3s ease-in-out;
     width: 100%;
 
-    &.is-selected {
+    &[data-selected='true'] {
       color: rgb(var(--ac-color-700));
     }
 
-    &.is-open,
-    &.is-open:hover {
+    &[aria-expanded='true'],
+    &[aria-expanded='true']:hover {
       border-color: var(--ac-primary-hover);
     }
 
@@ -279,6 +284,7 @@ const selectClasses = [
 
       &:hover,
       &:focus {
+        color: var(--ac-primary-hover);
         background-color: rgba(var(--ac-primary), 0.1);
       }
 
@@ -286,7 +292,7 @@ const selectClasses = [
         outline: none;
       }
 
-      &.is-selected {
+      &[aria-selected='true'] {
         background-color: rgba(var(--ac-primary), 0.1);
         color: rgb(var(--ac-color-700));
 
@@ -309,16 +315,16 @@ const selectClasses = [
   } from '../utils/select.ts'
 
   DOMLoaded(() => {
-    const selects = document.querySelectorAll('.ac-select')
+    const selects = document.querySelectorAll('[data-select]')
 
     selects.forEach((item) => {
       const select = item as HTMLSelectElement
-      const selectWrapper = select.closest('.ac-select-wrapper')
+      const selectWrapper = select.closest('[data-select-wrapper]')
       const popover = selectWrapper?.querySelector(
-        '.ac-select-popover'
+        '[data-select-popover]'
       ) as HTMLElement
       const options = popover?.querySelectorAll(
-        '.ac-select-list li button'
+        '[data-select-option]'
       ) as NodeListOf<HTMLButtonElement>
 
       let isOpen = false
