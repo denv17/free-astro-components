@@ -56,7 +56,9 @@ const { tabs = [{ label: 'tab 1', active: true }, { label: 'tab 1' }] } =
     border-bottom-width: var(--ac-border-2);
     border-color: var(--ac-transparent);
     color: rgb(var(--ac-color-500));
+    cursor: pointer;
     display: flex;
+    font-family: var(--ac-font-sans);
     font-size: var(--ac-text-sm);
     gap: var(--ac-spacing-2);
     justify-content: center;
@@ -71,7 +73,7 @@ const { tabs = [{ label: 'tab 1', active: true }, { label: 'tab 1' }] } =
     &[data-active] {
       border-color: rgb(var(--ac-primary));
       color: rgb(var(--ac-primary));
-      font-weight: var(--ac-font-bold);
+      font-weight: var(--ac-font-medium);
     }
   }
 </style>
