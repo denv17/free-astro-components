@@ -1,8 +1,10 @@
 ---
 import '../css/main.css'
+import type { TabItem } from '../../.'
 
 interface Props {
   tabs?: { label: string; active?: boolean }[]
+  children: TabItem | TabItem[]
 }
 
 const { tabs = [{ label: 'tab 1', active: true }, { label: 'tab 1' }] } =
