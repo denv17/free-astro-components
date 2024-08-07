@@ -37,3 +37,7 @@ export const Tab: Tab
 // TabItem component
 export type TabItem = typeof import('../index.js').TabItem
 export const TabItem: TabItem
+
+// ThemeSwitch component
+export type ThemeSwitch = typeof import('../index.js').ThemeSwitch
+export const ThemeSwitch: ThemeSwitch
