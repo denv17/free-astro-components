@@ -14,7 +14,7 @@ const { label } = Astro.props
     type="checkbox"
   />
   <svg
-    class="ac-theme-switch-icon ac-theme-switch-icon--dark block w-5 h-5"
+    class="ac-theme-switch-icon ac-theme-switch-icon--dark"
     viewBox="0 0 24 24"
   >
     <path
@@ -22,7 +22,7 @@ const { label } = Astro.props
       fill="currentColor"></path>
   </svg>
   <svg
-    class="ac-theme-switch-icon ac-theme-switch-icon--light hidden w-5 h-5"
+    class="ac-theme-switch-icon ac-theme-switch-icon--light"
     viewBox="0 0 24 24"
   >
     <path
@@ -31,7 +31,7 @@ const { label } = Astro.props
   </svg>
   {
     label ? (
-      <span class="ac-theme-switch-label absolute opacity-0 w-0 h-0 overflow-hidden">
+      <span class="ac-theme-switch-label">
         {label}
       </span>
     ) : (
@@ -45,7 +45,7 @@ const { label } = Astro.props
 <style>
   .ac-theme-switch-wrapper {
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: var(--ac-spacing-2);
     font-family: var(--ac-font-sans);
