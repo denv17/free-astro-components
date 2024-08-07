@@ -7,7 +7,7 @@ interface Props {
 const { label, class: className } = Astro.props
 ---
 
-<label class:list={["ac-theme-switch-wrapper", className]}>
+<label class:list={['ac-theme-switch-wrapper', className]}>
   <input
     data-theme-switch
     class="ac-theme-switch"
@@ -32,9 +32,7 @@ const { label, class: className } = Astro.props
   </svg>
   {
     label ? (
-      <span class="ac-theme-switch-label">
-        {label}
-      </span>
+      <span class="ac-theme-switch-label">{label}</span>
     ) : (
       <span class="ac-theme-switch-label ac-theme-switch-label--hidden">
         Toggle theme
@@ -107,17 +105,22 @@ const { label, class: className } = Astro.props
   import { DOMLoaded } from '../utils/utils'
 
   DOMLoaded(() => {
-    const themeSwitch = document.querySelector(
+    const themeSwitches = document.querySelectorAll(
       '[data-theme-switch]'
-    ) as HTMLInputElement | null
-    const theme = localStorage.getItem('theme') || 'light'
+    ) as NodeListOf<HTMLInputElement>
 
-    if (themeSwitch) {
-      document.documentElement.setAttribute('data-theme', theme)
-      const isLight = theme === 'light'
+    const theme = localStorage.getItem('theme') || 'light'
+    document.documentElement.setAttribute('data-theme', theme)
+
+    const isLight = theme === 'light'
+    themeSwitches.forEach((themeSwitch) => {
       themeSwitch.checked = isLight
       themeSwitch.setAttribute('aria-checked', isLight.toString())
-    }
+      themeSwitch.addEventListener('change', () => {
+        const isLight = themeSwitch.checked
+        toggleTheme(isLight)
+      })
+    })
 
     const toggleTheme = (isLight: boolean) => {
       document.documentElement.setAttribute(
@@ -125,12 +128,10 @@ const { label, class: className } = Astro.props
         isLight ? 'light' : 'dark'
       )
       localStorage.setItem('theme', isLight ? 'light' : 'dark')
-      themeSwitch?.setAttribute('aria-checked', isLight.toString())
+      themeSwitches.forEach((themeSwitch) => {
+        themeSwitch.setAttribute('aria-checked', isLight.toString())
+        themeSwitch.checked = isLight
+      })
     }
-
-    themeSwitch?.addEventListener('change', () => {
-      const isLight = themeSwitch.checked
-      toggleTheme(isLight)
-    })
   })
 </script>
