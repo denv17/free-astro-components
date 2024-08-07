@@ -72,6 +72,16 @@ const { label, class: className } = Astro.props
         color: rgb(var(--ac-color-700));
       }
     }
+
+    &:has(:focus) {
+      .ac-theme-switch-icon {
+        color: var(--ac-primary-hover);
+      }
+
+      .ac-theme-switch-label {
+        color: var(--ac-primary-hover);
+      }
+    }
   }
 
   .ac-theme-switch {
