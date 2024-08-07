@@ -5,13 +5,16 @@ import type { TabItem } from '../../.'
 interface Props {
   tabs?: { label: string; active?: boolean }[]
   children: TabItem | TabItem[]
+  class?: string
 }
 
-const { tabs = [{ label: 'tab 1', active: true }, { label: 'tab 1' }] } =
-  Astro.props
+const {
+  tabs = [{ label: 'tab 1', active: true }, { label: 'tab 1' }],
+  class: className,
+} = Astro.props
 ---
 
-<div data-tab class="ac-tab">
+<div data-tab class:list={['ac-tab', className]}>
   <ul data-tab-header role="tablist" class="ac-tab-header">
     {
       tabs.map((tab) => (

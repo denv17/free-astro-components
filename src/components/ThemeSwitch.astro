@@ -1,12 +1,13 @@
 ---
 interface Props {
   label?: string
+  class?: string
 }
 
-const { label } = Astro.props
+const { label, class: className } = Astro.props
 ---
 
-<label class="ac-theme-switch-wrapper">
+<label class:list={["ac-theme-switch-wrapper", className]}>
   <input
     data-theme-switch
     class="ac-theme-switch"

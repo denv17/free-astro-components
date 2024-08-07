@@ -2,16 +2,17 @@
 interface Props {
   active?: boolean
   children: any
+  class?: string
 }
 
-const { active } = Astro.props
+const { active, class: className } = Astro.props
 ---
 
 <div
   data-tab-pane
   aria-hidden={active ? 'false' : 'true'}
   role="tabpanel"
-  class="ac-tab-pane"
+  class:list={["ac-tab-pane", className]}
 >
   <slot />
 </div>
