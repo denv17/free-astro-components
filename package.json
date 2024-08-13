@@ -3,7 +3,7 @@
   "description": "A collection of free Astro components",
   "author": "Denis Ventura",
   "type": "module",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "exports": {
     ".": {
       "import": {
