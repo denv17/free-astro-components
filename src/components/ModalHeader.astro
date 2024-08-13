@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string
+  children: any
+}
+
+const { class: className } = Astro.props
+---
+
+<header class:list={['ac-modal-header', className]}>
+  <slot />
+</header>
+
+<style>
+  .ac-modal-header {
+    padding: var(--ac-spacing-4) var(--ac-spacing-6);
+  }
+</style>

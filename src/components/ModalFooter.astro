@@ -1,0 +1,22 @@
+---
+interface Props {
+  class?: string
+  children: any
+}
+
+const { class: className } = Astro.props
+---
+
+<footer class:list={['ac-modal-footer', className]}>
+  <slot />
+</footer>
+
+<style>
+  .ac-modal-footer {
+    align-items: center;
+    display: flex;
+    gap: var(--ac-spacing-4);
+    justify-content: flex-end;
+    padding: var(--ac-spacing-4) var(--ac-spacing-6);
+  }
+</style>

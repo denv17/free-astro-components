@@ -1,0 +1,256 @@
+---
+import '../css/main.css'
+import Icon from './Icon.astro'
+import type { ModalHeader, ModalBody, ModalFooter } from '../../.'
+
+interface Props {
+  id: string
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | 'full'
+  class?: string
+  children: ModalHeader | ModalBody | ModalFooter
+}
+
+const { id, size = 'md', class: className } = Astro.props
+const sizeClasses = {
+  xs: 'ac-modal--xs',
+  sm: 'ac-modal--sm',
+  md: 'ac-modal--md',
+  lg: 'ac-modal--lg',
+  xl: 'ac-modal--xl',
+  '2xl': 'ac-modal--2xl',
+  '3xl': 'ac-modal--3xl',
+  '4xl': 'ac-modal--4xl',
+  full: 'ac-modal--full',
+}[size]
+---
+
+<dialog
+  id={id}
+  class:list={[
+    'ac-modal ac-modal--close ac-modal--animated',
+    sizeClasses,
+    className,
+  ]}
+  data-modal
+>
+  <button class="ac-modal-close" data-modal-close>
+    <Icon icon="clear" />
+  </button>
+  <slot />
+</dialog>
+
+<style>
+  :root {
+    --ac-modal-backdrop-color: rgba(var(--ac-color-700), 0.15);
+    --ac-modal-backdrop-filter: blur(var(--ac-spacing-3));
+    --ac-modal-background-color: rgb(var(--ac-color-100));
+    --ac-modal-border-radius: var(--ac-rounded-2xl);
+    --ac-modal-width-xs: calc(var(--ac-spacing-16) * 5);
+    --ac-modal-width-sm: calc(var(--ac-spacing-16) * 6);
+    --ac-modal-width-md: calc(var(--ac-spacing-16) * 7);
+    --ac-modal-width-lg: calc(var(--ac-spacing-16) * 8);
+    --ac-modal-width-xl: calc(var(--ac-spacing-16) * 9);
+    --ac-modal-width-2xl: calc(var(--ac-spacing-16) * 10);
+    --ac-modal-width-3xl: calc(var(--ac-spacing-16) * 11);
+    --ac-modal-width-4xl: calc(var(--ac-spacing-16) * 12);
+  }
+
+  @keyframes slide-in-up {
+    0% {
+      transform: translateY(100%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-out-down {
+    100% {
+      transform: translateY(100%);
+      display: none;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+      display: flex;
+    }
+
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  .ac-modal {
+    background-color: var(--ac-modal-background-color);
+    border-top-left-radius: var(--ac-modal-border-radius);
+    border-top-right-radius: var(--ac-modal-border-radius);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--ac-font-sans);
+    height: auto;
+    inset-block-end: 0;
+    inset-block-start: auto;
+    max-height: calc(100% - var(--ac-spacing-16));
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 0;
+    padding-inline: 0;
+    padding-top: var(--ac-spacing-4);
+    position: fixed;
+    width: 100%;
+
+    &::backdrop {
+      -webkit-backdrop-filter: var(--ac-modal-backdrop-filter);
+      backdrop-filter: var(--ac-modal-backdrop-filter);
+      background-color: var(--ac-modal-backdrop-color);
+      cursor: pointer;
+    }
+
+    &:before {
+      background-color: rgba(var(--ac-color-300), 0.5);
+      border-radius: var(--ac-rounded-full);
+      content: '';
+      display: block;
+      height: var(--ac-spacing-1);
+      left: calc(50% - var(--ac-spacing-5));
+      position: absolute;
+      top: var(--ac-spacing-3);
+      width: var(--ac-spacing-10);
+    }
+
+    &.ac-modal--close {
+      display: none;
+    }
+
+    &.ac-modal--full {
+      border-radius: 0;
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    &.ac-modal--animated {
+      animation: slide-out-down 0.2s forwards;
+
+      &[open] {
+        animation: slide-in-up 0.3s linear;
+      }
+    }
+  }
+
+  .ac-modal-close {
+    appearance: none;
+    background-color: var(--ac-transparent);
+    border-radius: var(--ac-rounded-full);
+    color: rgb(var(--ac-color-500));
+    cursor: pointer;
+    height: var(--ac-spacing-8);
+    padding: var(--ac-spacing-1);
+    position: absolute;
+    right: var(--ac-spacing-2);
+    top: var(--ac-spacing-2);
+    width: var(--ac-spacing-8);
+
+    &:hover {
+      background-color: rgb(var(--ac-color-200));
+      color: rgb(var(--ac-color-700));
+    }
+
+    & > svg {
+      height: var(--ac-spacing-6);
+      width: var(--ac-spacing-6);
+    }
+  }
+
+  @media (min-width: 640px) {
+    .ac-modal {
+      border-bottom-left-radius: var(--ac-modal-border-radius);
+      border-bottom-right-radius: var(--ac-modal-border-radius);
+      inset-block-start: 0;
+      max-width: calc(100% - var(--ac-spacing-16));
+      padding-top: 0;
+
+      &:before {
+        content: none;
+      }
+
+      &.ac-modal--sm {
+        width: var(--ac-modal-width-sm);
+      }
+
+      &.ac-modal--md {
+        width: var(--ac-modal-width-md);
+      }
+
+      &.ac-modal--lg {
+        width: var(--ac-modal-width-lg);
+      }
+
+      &.ac-modal--xl {
+        width: var(--ac-modal-width-xl);
+      }
+
+      &.ac-modal--2xl {
+        width: var(--ac-modal-width-2xl);
+      }
+
+      &.ac-modal--3xl {
+        width: var(--ac-modal-width-3xl);
+      }
+
+      &.ac-modal--4xl {
+        width: var(--ac-modal-width-4xl);
+      }
+
+      &.ac-modal--animated {
+        animation: fade-out 0.2s forwards;
+
+        &[open] {
+          animation: fade-in 0.3s linear;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  import { DOMLoaded } from '../utils/utils'
+  import { openModal, closeModal } from '../utils/modal'
+
+  DOMLoaded(() => {
+    const modalTriggers = document.querySelectorAll(
+      '[data-modal-trigger]'
+    ) as NodeListOf<HTMLButtonElement>
+    const modalCloses = document.querySelectorAll(
+      '[data-modal-close]'
+    ) as NodeListOf<HTMLButtonElement>
+
+    modalTriggers.forEach((trigger) => {
+      const modalId = trigger.dataset.modalTrigger
+      const modal = document.querySelector(`#${modalId}`) as HTMLDialogElement
+
+      trigger.addEventListener('click', () => openModal(modal))
+    })
+
+    modalCloses.forEach((close) => {
+      const modal = close.closest('[data-modal]') as HTMLDialogElement
+
+      close.addEventListener('click', () => closeModal(modal))
+    })
+  })
+</script>

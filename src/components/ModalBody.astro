@@ -1,0 +1,20 @@
+---
+interface Props {
+  class?: string
+  children: any
+}
+
+const { class: className } = Astro.props
+---
+
+<div class:list={['ac-modal-body', className]}>
+  <slot />
+</div>
+
+<style>
+  .ac-modal-body {
+    flex: 1 1 0%;
+    overflow-y: auto;
+    padding: var(--ac-spacing-4) var(--ac-spacing-6);
+  }
+</style>

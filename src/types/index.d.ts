@@ -41,3 +41,19 @@ export const TabItem: TabItem
 // ThemeSwitch component
 export type ThemeSwitch = typeof import('../index.js').ThemeSwitch
 export const ThemeSwitch: ThemeSwitch
+
+// Modal component
+export type Modal = typeof import('../index.js').Modal
+export const Modal: Modal
+
+// ModalHeader component
+export type ModalHeader = typeof import('../index.js').ModalHeader
+export const ModalHeader: ModalHeader
+
+// ModalBody component
+export type ModalBody = typeof import('../index.js').ModalBody
+export const ModalBody: ModalBody
+
+// ModalFooter component
+export type ModalFooter = typeof import('../index.js').ModalFooter
+export const ModalFooter: ModalFooter

@@ -5,3 +5,7 @@ export const DOMLoaded = (callback: () => void) => {
     callback()
   }
 }
+
+export const isTouchDevice = () => {
+  return window.matchMedia('(pointer: coarse)').matches
+}
