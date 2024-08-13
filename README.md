@@ -27,6 +27,11 @@ Explore and utilize a variety of components that can help you build your web pro
 - **Tab**
   - A tab component for organizing content into tabs.
   - **TabItem**: A subcomponent for individual tab items.
+- **Modal**
+  - A modal component for displaying content in a dialog.
+  - **ModalHeader**: The header section of the modal, usually containing a title.
+  - **ModalBody**: The main content area of the modal.
+  - **ModalFooter**: The footer section of the modal, typically containing action buttons.
 
 ## Getting Started
 
@@ -36,14 +41,67 @@ Explore and utilize a variety of components that can help you build your web pro
 
 2. **Installation:**
 
-   - To use these components in your Astro.js project, follow the [installation instructions](https://free-astro-components.vercel.app/guide/installation).
+   - To use these components in your Astro.js project, you can install the package via npm:
+
+     ```bash
+     npm install free-astro-components
+     ```
+
+   - Follow the [installation instructions](https://free-astro-components.vercel.app/guide/installation) for more details on setting up and using the components in your project.
 
 3. **Usage:**
-   - Detailed documentation and code examples are available on the website to help you integrate and customize each component.
 
-## Documentation
+   ### Example Usage
 
-For detailed guides and information, visit the [Documentation](https://free-astro-components.vercel.app/guide/installation) page.
+   Here’s how you can use some of the components in your Astro.js project:
+
+   **Button Component:**
+
+   ```jsx
+   // src/pages/index.astro
+   ---
+   import { Button } from 'free-astro-components';
+   ---
+
+   <Button label="Click me" />
+   ```
+
+   **Select Component:**
+
+   ```jsx
+   // src/pages/index.astro
+   ---
+   import { Select } from 'free-astro-components';
+   ---
+
+   <Select placeholder="Select an option" options={[{label: 'option 1'}, {label: 'option 2'}]} />
+   ```
+
+   **Select Component:**
+
+   ```jsx
+   // src/pages/index.astro
+    ---
+    import { Modal, ModalHeader, ModalBody, ModalFooter } from 'free-astro-components';
+    ---
+
+    <Button label="Click me" data-modal-trigger="modal-id" />
+
+    <Modal id="modal-id">
+      <ModalHeader>
+        <h2>Modal Title</h2>
+      </ModalHeader>
+      <ModalBody>
+        <p>This is the modal body content.</p>
+      </ModalBody>
+      <ModalFooter>
+        <Button variant="secondary" label="Close" data-modal-close>
+        <Button variant="primary" label="Confirm">
+      </ModalFooter>
+    </Modal>
+   ```
+
+   Detailed documentation and code examples for each component are available on the website to help you integrate and customize them.
 
 ## Credits
 
