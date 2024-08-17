@@ -57,3 +57,11 @@ export const ModalBody: ModalBody
 // ModalFooter component
 export type ModalFooter = typeof import('../index.js').ModalFooter
 export const ModalFooter: ModalFooter
+
+// openModal function
+export type openModal = typeof import('../index.js').openModal
+export const openModal: openModal
+
+// closeModal function
+export type closeModal = typeof import('../index.js').closeModal
+export const closeModal: closeModal
