@@ -114,3 +114,9 @@ This project is licensed under the MIT License.
 ## Contact
 
 For any questions or support, please reach out to [dventura017@gmail.com] or open an issue on the [GitHub repository](https://github.com/denv17/free-astro-components.git).
+
+## Thanks
+
+If you find this project helpful and would like to support its development, consider buying me a coffee:
+
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >](https://buymeacoffee.com/denv)
