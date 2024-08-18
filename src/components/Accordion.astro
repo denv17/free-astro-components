@@ -1,0 +1,111 @@
+---
+import '../css/main.css'
+import type { AccordionItem } from '../../.'
+
+interface Props {
+  variant?: 'light' | 'shadow' | 'bordered' | 'splitted'
+  class?: string
+  children: AccordionItem | AccordionItem[]
+}
+
+const { variant = 'light', class: className } = Astro.props
+const variantClasses = {
+  light: 'ac-accordion--light',
+  shadow: 'ac-accordion--shadow',
+  bordered: 'ac-accordion--bordered',
+  splitted: 'ac-accordion--splitted',
+}[variant]
+---
+
+<div class:list={['ac-accordion', variantClasses, className]}>
+  <slot />
+</div>
+
+<style>
+  :root {
+    --ac-accordion-background-color: rgb(var(--ac-color-100));
+    --ac-accordion-border-color: var(--ac-color-200);
+    --ac-accordion-border-width: var(--ac-border);
+    --ac-accordion-rounded: var(--ac-rounded-2xl);
+    --ac-accordion-spacing: var(--ac-spacing-4);
+  }
+
+  .ac-accordion {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+
+    &.ac-accordion--light {
+      > * + * {
+        border-color: rgb(var(--ac-accordion-border-color));
+        border-top-width: var(--ac-accordion-border-width);
+      }
+    }
+
+    &.ac-accordion--shadow {
+      background-color: var(--ac-accordion-background-color);
+      border-radius: var(--ac-accordion-rounded);
+      border-width: var(--ac-accordion-border-width);
+      border-color: rgba(var(--ac-accordion-border-color), 0.5);
+      box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 -5px 15px -4px rgb(0 0 0 / 0.05);
+      padding: 0 var(--ac-accordion-spacing);
+
+      > * + * {
+        border-color: rgb(var(--ac-accordion-border-color));
+        border-top-width: var(--ac-accordion-border-width);
+      }
+    }
+
+    &.ac-accordion--bordered {
+      border-color: rgb(var(--ac-accordion-border-color));
+      border-radius: var(--ac-accordion-rounded);
+      border-width: calc(var(--ac-accordion-border-width) * 2);
+      padding: 0 var(--ac-accordion-spacing);
+
+      > * + * {
+        border-color: rgb(var(--ac-accordion-border-color));
+        border-top-width: var(--ac-accordion-border-width);
+      }
+    }
+
+    &.ac-accordion--splitted {
+      gap: var(--ac-spacing-2);
+
+      > * {
+        background-color: var(--ac-accordion-background-color);
+        border-radius: var(--ac-accordion-rounded);
+        border-width: var(--ac-accordion-border-width);
+        border-color: rgba(var(--ac-accordion-border-color), 0.5);
+        padding: 0 var(--ac-accordion-spacing);
+        box-shadow:
+          0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 -5px 15px -4px rgb(0 0 0 / 0.05);
+      }
+    }
+  }
+</style>
+
+<script>
+  import {
+    DOMLoaded,
+    handleResize,
+    hasViewportWidthChanged,
+  } from '../utils/utils'
+  import { setAccordionHeight } from '../utils/accordion'
+
+  DOMLoaded(() => {
+    const accordions = document.querySelectorAll<HTMLDetailsElement>(
+      '[data-accordion-item]'
+    )
+
+    setAccordionHeight(accordions)
+
+    handleResize(() => {
+      if (hasViewportWidthChanged()) {
+        setAccordionHeight(accordions)
+      }
+    })
+  })
+</script>

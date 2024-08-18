@@ -1,0 +1,92 @@
+---
+import Icon from './Icon.astro'
+
+interface Props {
+  open?: boolean
+  title: string
+  name?: string
+  class?: string
+}
+
+const { open, title, name, class: className } = Astro.props
+---
+
+<details
+  data-accordion-item
+  class:list={['ac-accordion-item', className]}
+  name={name}
+  open={open}
+>
+  <summary class="ac-accordion-item-title">
+    <span>{title}</span>
+    <Icon icon="add" />
+  </summary>
+  <div class="ac-accordion-item-content">
+    <slot />
+  </div>
+</details>
+
+<style>
+  .ac-accordion-item {
+    margin: 0;
+    font-family: var(--ac-font-sans);
+    height: var(--ac-accordion-item-collapsed);
+    overflow: hidden;
+
+    &[open] {
+      height: var(--ac-accordion-item-expanded);
+
+      .ac-accordion-item-title {
+        color: rgb(var(--ac-color-700));
+
+        & > svg {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    &.accordion-item--animated {
+      transition: height 0.3s linear;
+    }
+  }
+
+  .ac-accordion-item-title {
+    align-items: center;
+    color: rgb(var(--ac-color-500));
+    cursor: pointer;
+    display: flex;
+    font-size: var(--ac-text-lg);
+    font-weight: var(--ac-font-medium);
+    gap: var(--ac-spacing-3);
+    justify-content: space-between;
+    line-height: var(--ac-leading-normal);
+    list-style-type: none;
+    padding: var(--ac-accordion-spacing) 0;
+    transition: color 0.3s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: rgb(var(--ac-color-700));
+    }
+
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    & > span {
+      flex: 1 1 auto;
+    }
+
+    & > svg {
+      width: var(--ac-spacing-6);
+      height: var(--ac-spacing-6);
+      transition: transform 0.3s ease-in-out;
+      color: rgb(var(--ac-color-400));
+    }
+  }
+
+  .ac-accordion-item-content {
+    padding: 0 0 var(--ac-accordion-spacing);
+  }
+</style>

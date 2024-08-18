@@ -65,3 +65,11 @@ export const openModal: openModal
 // closeModal function
 export type closeModal = typeof import('../index.js').closeModal
 export const closeModal: closeModal
+
+// Accordion component
+export type Accordion = typeof import('../index.js').Accordion
+export const Accordion: Accordion
+
+// AccordionItem component
+export type AccordionItem = typeof import('../index.js').AccordionItem
+export const AccordionItem: AccordionItem

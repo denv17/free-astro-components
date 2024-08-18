@@ -32,6 +32,9 @@ Explore and utilize a variety of components that can help you build your web pro
   - **ModalHeader**: The header section of the modal, usually containing a title.
   - **ModalBody**: The main content area of the modal.
   - **ModalFooter**: The footer section of the modal, typically containing action buttons.
+- **Accordion**
+  - A component for creating collapsible content sections.
+  - **AccordionItem**: A subcomponent for individual accordion items.
 
 ## Getting Started
 
