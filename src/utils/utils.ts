@@ -1,4 +1,4 @@
-let lastWidth = window.innerWidth
+let lastWidth: number;
 
 export const DOMLoaded = (callback: () => void) => {
   if (document.readyState === 'loading') {
@@ -31,12 +31,16 @@ export const isTouchDevice = () => {
 }
 
 export const hasViewportWidthChanged = (): boolean => {
-  const currentWidth = window.innerWidth
-  const widthChanged = currentWidth !== lastWidth
+  if (typeof window !== 'undefined') {
+    const currentWidth = window.innerWidth;
+    const widthChanged = currentWidth !== lastWidth;
 
-  if (widthChanged) {
-    lastWidth = currentWidth
+    if (widthChanged) {
+      lastWidth = currentWidth;
+    }
+
+    return widthChanged;
   }
 
-  return widthChanged
-}
+  return false;
+};
