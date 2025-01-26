@@ -52,18 +52,6 @@ const { label, class: className } = Astro.props
     color: rgb(var(--ac-color-700));
     font-size: var(--ac-text-sm);
 
-    &:has([aria-checked='true']) {
-      .ac-theme-switch-icon--dark {
-        display: none;
-      }
-    }
-
-    &:has([aria-checked='false']) {
-      .ac-theme-switch-icon--light {
-        display: none;
-      }
-    }
-
     &:hover {
       .ac-theme-switch-icon {
         color: var(--ac-primary-hover);
@@ -83,6 +71,14 @@ const { label, class: className } = Astro.props
         color: var(--ac-primary-hover);
       }
     }
+  }
+
+  :global(html[data-theme="dark"]) .ac-theme-switch-icon--light {
+      display: none;
+  }
+
+  :global(html[data-theme="light"]) .ac-theme-switch-icon--dark {
+      display: none;
   }
 
   .ac-theme-switch {
@@ -112,6 +108,13 @@ const { label, class: className } = Astro.props
   }
 </style>
 
+<script is:inline>
+  (() => {
+    const theme = localStorage.getItem('theme') || 'light'
+    document.documentElement.setAttribute('data-theme', theme)
+  })();
+</script>
+
 <script>
   import { DOMLoaded } from '../utils/utils'
 
@@ -121,7 +124,6 @@ const { label, class: className } = Astro.props
     ) as NodeListOf<HTMLInputElement>
 
     const theme = localStorage.getItem('theme') || 'light'
-    document.documentElement.setAttribute('data-theme', theme)
 
     const isLight = theme === 'light'
     themeSwitches.forEach((themeSwitch) => {
