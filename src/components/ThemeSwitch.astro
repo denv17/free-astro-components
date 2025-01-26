@@ -109,7 +109,7 @@ const { label, class: className } = Astro.props
 </style>
 
 <script is:inline>
-  (function () {
+  (() => {
     const theme = localStorage.getItem('theme') || 'light'
     document.documentElement.setAttribute('data-theme', theme)
   })();
