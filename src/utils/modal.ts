@@ -24,12 +24,17 @@ export const openModal = (modal: HTMLDialogElement) => {
 
 export const closeModal = (modal: HTMLDialogElement) => {
   const body = document.body
+  modal.classList.add('ac-modal--animated')
+
   modal.close()
   if (isTouchDevice()) {
     disableTouchControls(modal)
   }
   setTimeout(() => {
     modal.classList.add('ac-modal--close')
+    modal.style.removeProperty('transform')
+    modal.style.removeProperty('opacity')
+    modal.style.removeProperty('transition')
     body.style.overflow = 'auto'
   }, 200)
 }
@@ -80,9 +85,7 @@ const enableTouchControls = (modal: HTMLDialogElement) => {
     modal.style.transform = `translateY(${translateY}px)`
 
     if (translateY > 250) {
-      modal.close()
-      modal.classList.add('ac-modal--animated')
-      modal.classList.add('ac-modal--close')
+      closeModal(modal)
     }
   }
 
