@@ -1,5 +1,19 @@
 import { isTouchDevice } from '../utils/utils'
 
+const runCloseCleanup = (modal: HTMLDialogElement) => {
+  const body = document.body
+  if (isTouchDevice()) {
+    disableTouchControls(modal)
+  }
+  setTimeout(() => {
+    modal.classList.add('ac-modal--close')
+    modal.style.removeProperty('transform')
+    modal.style.removeProperty('opacity')
+    modal.style.removeProperty('transition')
+    body.style.overflow = 'auto'
+  }, 200)
+}
+
 export const openModal = (modal: HTMLDialogElement) => {
   const body = document.body
 
@@ -10,6 +24,14 @@ export const openModal = (modal: HTMLDialogElement) => {
   if (isTouchDevice()) {
     enableTouchControls(modal)
   }
+
+  modal.addEventListener(
+    'close',
+    () => {
+      runCloseCleanup(modal)
+    },
+    { once: true },
+  )
 
   modal.addEventListener(
     'click',
@@ -23,20 +45,8 @@ export const openModal = (modal: HTMLDialogElement) => {
 }
 
 export const closeModal = (modal: HTMLDialogElement) => {
-  const body = document.body
   modal.classList.add('ac-modal--animated')
-
   modal.close()
-  if (isTouchDevice()) {
-    disableTouchControls(modal)
-  }
-  setTimeout(() => {
-    modal.classList.add('ac-modal--close')
-    modal.style.removeProperty('transform')
-    modal.style.removeProperty('opacity')
-    modal.style.removeProperty('transition')
-    body.style.overflow = 'auto'
-  }, 200)
 }
 
 const enableTouchControls = (modal: HTMLDialogElement) => {
@@ -98,9 +108,9 @@ const enableTouchControls = (modal: HTMLDialogElement) => {
   modal.addEventListener('touchstart', handleTouchStart, { passive: true })
   modal.addEventListener('touchmove', handleTouchMove, { passive: true })
   modal.addEventListener('touchend', handleTouchEnd, { passive: true })
-  ;(modal as any).handleTouchStart = handleTouchStart
-  ;(modal as any).handleTouchMove = handleTouchMove
-  ;(modal as any).handleTouchEnd = handleTouchEnd
+    ; (modal as any).handleTouchStart = handleTouchStart
+    ; (modal as any).handleTouchMove = handleTouchMove
+    ; (modal as any).handleTouchEnd = handleTouchEnd
 }
 
 const disableTouchControls = (modal: HTMLDialogElement) => {
